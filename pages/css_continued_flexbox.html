@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>CSS Boxes/Flexbox</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+
+    <body>
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../notes.html">HTML Notes</a></li>
+                    <li><a href="./css_notes.html">CSS notes</a></li>
+                    <li>future notes go here</li>
+                    <li><a href="./projects.html">Projects</a></li>
+                    <li><a href="./test_page.html">Testing workplace</a></li>
+                </ul>
+                <h3>Quick Links:</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox">Basic concepts of flexbox</a></li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div>
+            <h1><strong><em>CSS Boxes and Flexbox</em></strong></h1>
+            
+            <div>
+                <h2>Boxes</h2>
+                <p>Each "box" has a set of characteristics:</p>
+                <ul class="boxes_example">
+                    <li>
+                        Width
+                    </li>
+                    <li>
+                        Height
+                    </li>
+                    <li>
+                        Padding - space inside the box
+                    </li>
+                    <li>
+                        Border - space around the box
+                    </li>
+                    <li>
+                        Margin - space outside the box
+                    </li>
+                </ul>
+                <img src="\images\Boxes.png" alt="boxes characteristics">
+            </div>
+
+            <div>
+                <h2>Flexbox</h2>
+                <p>The default layout without flexbox is top to bottom.</p>
+                <p>Example of the defualt layout below:</p>
+
+                <div>
+                    <div class="flexbox_box flexbox_red">RED</div>
+                    <div class="flexbox_box flexbox_green">GREEN</div>
+                    <div class="flexbox_box flexbox_yellow">YELLOW</div>
+                </div>
+
+                <p>Adding CSS style <strong>{ display: flex }</strong>, it will move the items side by side as the page has room for it.</p>
+                
+                <div class="flexbox_display">
+                    <div class="flexbox_box flexbox_red">RED</div>
+                    <div class="flexbox_box flexbox_green">GREEN</div>
+                    <div class="flexbox_box flexbox_yellow">YELLOW</div>
+                </div>
+
+                <p>This allows the boxes to resize, but we need to change how the boxes react to the window resizing while staying inside the div <em>"box"</em>. To make they "wrap" to maintain their size, we can add <strong>{ flex-wrap: wrap; }</strong></p>
+
+                <div class="flexbox_display flexbox_flexwrap">
+                    <div class="flexbox_box flexbox_red">RED</div>
+                    <div class="flexbox_box flexbox_green">GREEN</div>
+                    <div class="flexbox_box flexbox_yellow">YELLOW</div>
+                </div>
+                
+                <p>We can resize the page to see how this affects the contents of the div <em>"box"</em>.</p>
+                <p>It is important to see how the <em>container</em> element affects the layout of the boxes inside of it:</p>
+
+                <div class="flexbox_display flexbox_flexwrap flexbox_container">
+                    <div class="flexbox_box flexbox_red">RED</div>
+                    <div class="flexbox_box flexbox_green">GREEN</div>
+                    <div class="flexbox_box flexbox_yellow">YELLOW</div>
+                </div>
+                
+                <p>In the above example, each box is 100px, but the container is only 200px so the 3rd box <em>flexes</em> to the next line.</p>
+
+
+            </div>
+
+            <div class="review">
+                <h2>CSS Syntax Review</h2>
+
+                <h3>Ruleset Syntax</h3>
+                <p>The basic syntax of a CSS ruleset has two parts: a selector, and a group of rules, each of which consists of a property name and the value of that property.</p>
+                <p><strong>selector { property: value }</strong></p>
+                <img src="../images/CSS_syntax.png" alt="CSS syntax">
+                <p>The selector is written first, and then the rules are written inside <strong>{ curly brackets }</strong>. Each rule's property and value are separated by a <strong>:</strong> colon, and the rule always ends with a <strong>;</strong> semicolon.</p>
+
+                <h3>Selectors</h3>
+                <p>The selector indicates which HTML elements the rule will apply to. You've seen a few different sorts of selector: the <em>element</em> selector, the <em>class</em> selector, the <em>id</em> selector, and the <em>descendant</em> selector.</p>
+                <p><strong><em>type</em> selector</strong> applies to every HTML element of a particular type, such as <strong>p</strong> or <strong>em</strong>. This selector will apply to every <strong>p</strong> element:<br>
+                <strong>p { color: blue; }</strong></p>
+                <p><strong><em>class</em> selector</strong> applies to all elements that share a <strong>class</strong> attribute. The class selector is written starting with a <strong>.</strong> (dot):<br>
+                <strong>.narrow { width: 20% }</strong><br>
+                In order for the class selector to apply, there have to be HTML elements on the page that use that <strong>class</strong> attribute:<br>
+                <strong>&ltdiv class="narrow"&gt</strong></p>
+                <p><strong><em>id</em> selector</strong>applies to an element with a particular <strong>id</strong> attribute. The <em>id</em> selector is written starting with a <strong>#</strong> sign:<br>
+                <strong>#sidebar { background-color: lightgray; float: left; }</strong><br>
+                In an HTML page, there should be only one element with a given <strong>id</strong> attribute value:<br>
+                <strong>&ltdiv id="sidebar"&gt</strong></p>
+                <p><strong><em>descendant</em> selector</strong> is a compound of two simpler selectors. It applies only to an inner element that is a descendant (on the DOM tree) of a particular outer element:<br>
+                <strong>li a { color: pink; }</strong><br>
+                the above selector will apply to <strong>a</strong> elements only if it's inside an <strong>li</strong> element:<br>
+                <strong>&ltli&gt &lta href="example.com"&gt example &lt/a&gt</strong></p>
+
+                <h3>Rules</h3>
+                <p>A ruleset can be composed of several rules, each of which applies a particular <em>value</em> to a <em>property</em> of the selected elements. Properties are things such as the color, position, size, and shape of the element.<br>
+                <strong>h1 { color: red; font-size: larger; }</strong></p>
+                <p>This rule applies to the value <strong>red</strong> to the property <strong>color</strong>, and the value <strong>larger</strong> to the larger property <strong>font-size</strong></p>
+                <p>Some properties allow values that are more than one word long, such as the <strong>font</strong> property:<br>
+                <strong>body { font: 12pt bold Consolas, Monaco, monospace; }</strong></p>
+                <p><strong>Font stacks</strong> is a list of font options seperated by a <strong>,</strong> commas. The browser will use the first font in the stack that is available on the user's system. Usually the last font in the stack should be generic font name, such as <strong>serif</strong>, <strong>sans-serif</strong>, or <strong>monospace</strong>.</p>
+
+                <h3>Colors</h3>
+                <p>Colors can be identified in CSS a few ways. Three common ways to identify colors are hex code, rgb, and color names:<br>
+                hex code: <strong>.orange { color: #ff9900;</strong><br>
+                rgb: <strong>.pink { color: rgb(100%,80%,80%) }</strong><br>
+                color name: <strong>chartreuse { color: chartreuse; }</strong></p>
+
+                <h3>Flexbox</h3>
+                <p>
+                    To change the browser's layout from the default document-based layout to the flexible box layout, set <strong>display: flex</strong> on a container element (The parent element that contains the other elements inside it):<br>
+                    <strong>.outer { display: flex; border: 2px dotted orange;<br>
+                    .inner { width: 100px; border: 1px solid black; padding: 10px;</strong>
+                </p>
+            </div>
+
+
+
+            
+        </div>
+
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../notes.html">HTML Notes</a></li>
+                    <li><a href="./css_notes.html">CSS notes</a></li>
+                    <li>future notes go here</li>
+                    <li><a href="./projects.html">Projects</a></li>
+                    <li><a href="./test_page.html">Testing workplace</a></li>
+                </ul>
+                <h3>Quick Links:</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox">Basic concepts of flexbox</a></li>
+                </ul>
+
+            </div>
+        </nav>
+    </body>
+</html>

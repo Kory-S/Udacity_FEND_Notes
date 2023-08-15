@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>CSS Notes</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+
+    <body>        
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../notes.html">HTML Notes</a></li>
+                    <li><a href="./css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li>future notes go here</li>
+                    <li><a href="./projects.html">Projects</a></li>
+                    <li><a href="./test_page.html">Testing workplace</a></li>
+                </ul>
+                <h3>Quick Links:</h3>
+                <ul>
+                    <li><a href="https://developers.google.com/fonts/docs/getting_started">Google Fonts Dcoumentation</a></li>
+                    <li><a href="https://fonts.google.com/">Google fonts</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div>
+            <h1><strong><em>CSS Notes</em></strong></h1>
+
+            <div>
+                <h2>CSS Syntax</h2>
+                <p>Ruleset:</p>
+                <ul>
+                    <li>
+                        <strong>Selector</strong><br>
+                        Which HTML element(s) the rule will apply to.
+                    </li>
+                    <li>
+                        <strong>Declaration block</strong><br>
+                        How the rule will modify the <em>selected</em> element(s)
+                    </li>
+                </ul>
+                <p><strong>Example:</strong><br>p {<br>border: 2px solid purple;<br>}</p>
+                <p>The <strong><em>Selector</em></strong> in this example is "<strong>p</strong>" (or paragraphs)<br>
+                The <strong><em>Decleration block</em></strong> is inside the curly braces - "<strong>border: 2px solid purple;</strong>"</p>
+                <p>In the Declaration block, are declaration rules</p>
+                <p>The <em>property</em>of the declaration block is a descriptive name<br>
+                Each property has a declared <em>value</em> that is given to the property</p>
+                <p>the <em style="background-color: lightblue">property</em> of the above example is <em style="background-color: lightblue";>p</em><br>
+                them <em style="background-color: lightcoral";>value</em> of the above example is <em style="background-color: lightcoral";>2px solid purple;</em></p>
+                <img src="../images/CSS_syntax.png" alt="CSS syntax">
+            </div>
+
+            <div>
+                <h2>CSS Selectors</h2>
+                <ul>
+                    <li>
+                        Type - identifies all of a specific type of HTML<br>
+                        Used to affect all types on a page<br>
+                        Examples:
+                        <ul>
+                            <li>em</li>
+                            <li>p</li>
+                            <li>body</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Class - selector that starts with a "<strong>.</strong>"<br>
+                        Use when there could be several elements that need the same style.
+                        Examples:
+                        <ul>
+                            <li>.intro</li>
+                            <li>.followup</li>
+                        </ul>
+                    </li>
+                    <li>
+                        ID - selector that starts with a "<strong>#</strong>" and is meant to be unique<br>
+                        Use when there's only <strong>one</strong> element to apply it to.
+                        Examples:
+                        <ul>
+                            <li>#first_headline</li>
+                            <li>#page_footer</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Combine selectors - Parent selector first followed by child selector.<br>
+                        <em class="combine">Example:</em><br>
+                        <strong>li .combine {<br>color: whitesmoke;<br>background-color: darkslategray;<br>}</strong><br>
+                        <ul>
+                            <li>Every <strong class="combine">li</strong> element with class <strong class="combine">combine</strong> will be affected. You can identify which parts of this list are affected.<br></li>
+                            <li>Note: If <strong class="combine">li</strong> and <strong class="combine">.combine</strong> were switched, this would <em class="combine">not</em> work because the is <strong>li</strong> not a child of <strong>.combine</strong>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="review">
+                <h2>Vocabulary Review</h2>
+                <ul>
+                    <li>
+                        <strong>DOM</strong> - Document Object Model<br>
+                        The tree structure with a node for each HTML element, text, image, and any other object in the webpage.
+                    </li>
+                    <li>
+                        <strong>Selectors</strong> - First part of the CSS ruleset<br>
+                        Indicates which HTML element(s) the rule is for.
+                    </li>
+                    <li>
+                        <strong>Declaration blocks</strong> - Second part of the CSS ruleset<br>
+                        Indicates how the rule will modify the element(s) indicated by the selector.
+                    </li>
+                    <li>
+                        CSS <strong>rulesets</strong> - composed of a <em>selector</em> followed by a <em>declaration block</em>
+                    </li>
+                    <li>
+                        <strong>type</strong><br>
+                        Indicates the name of one type of HTML element <em>(such as <strong>&lth1&gt</strong> or <strong>&ltp&gt</strong>)</em>
+                    </li>
+                    <li>
+                        <strong>class</strong><br>
+                        An attribute that groups elements together that you want to have the same style.<br>
+                        This will affect anything that the class attribute is applied to.
+                    </li>
+                    <li>
+                        <strong>id</strong><br>
+                        This attribute <em>must</em> be unique to a single element
+                    </li>
+                </ul>
+            </div>
+
+            <div class="review">
+                <h2>Selectors Review</h2>
+                <ul>
+                    <li>
+                        <strong>type</strong><br>
+                        Used to apply a style to a particular <em>type</em> of HTML element, like <mark><strong>h1</strong></mark> or <strong><mark>body</mark></strong>. Type selectors are written using just the type name.
+                    </li>
+                    <li>
+                        <strong>Class</strong><br>
+                        Used to set style for multiple HTML elements that have a particular value for the <em>id</em> attribute. You can name a class anything you want; written with a dot before the class.
+                    </li>
+                    <li>
+                        <strong>ID</strong><br>
+                        Used when the style is being applied to one unique HTML element, which has to have an <em>id</em> attribute. You can choose any name like a class but the <em>id</em> selector is written with a # sign before it.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="boilerplate">
+                <h2>CSS Boilerplate</h2>
+                <pre>
+type {
+    <em>property</em>: <em> value</em>;
+}
+
+.class {
+    <em>property</em>: <em> value</em>;
+}
+
+#id {
+    <em>property</em>: <em> value</em>;
+}
+                </pre>
+            </div>
+
+            <div>
+                <h2>Cascading and Specificity</h2>
+                <p>"Cascading" refers to the way that style properies "cascade" down the DOM tree, starting at the top or parent. Any style applied to a parent type (body, h1, ul) will affect or cascade to all the child elements.</p>
+                <p>Example<br>
+                    ul { 
+                        background-color: blue;
+                        font-weight: bold;
+                    }<br>
+                    li {
+                        background-color: orange;
+                    }
+                </p>
+                <p>In the aboce example, the background for <strong>li</strong> elements will be different than the <strong>ul</strong>, but all the text in the <strong>li</strong> will be bold because there is no ruleset for font-weight.</p>
+            </div>
+
+            <div>
+                <h2>Units</h2>
+                <h3>Units based on inches</h3>
+                <ul>
+                    <li>
+                        Pixel or <strong>px</strong>: 96px = 1 inch<br>
+                        The basic unit of measurment in CSS.
+                    </li>
+                    <li>
+                        Point or <strong>pt</strong>: 72px = 1 inch
+                    </li>
+                </ul>
+                <h3>Units based relative to the size of something else on the page</h3>
+                <ul>
+                    <li>
+                        <strong>em</strong>: relative to font size of the unit. <br>
+                        When using an 18pt font, 1em = 18pt. When using a 12pt font, 1em = 12pt.
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Percentages</h2>
+                <p>Makes the "box" the percent/fraction of the size from the box it is inside</p>
+                <p>For a box inside the whole page, 50% is <sup>1</sup>/<sub>2</sub> the size of the page. If the target is inside another box, it'll be <sup>1</sup>/<sub>2</sub> the size of the parent box.</p>
+                <p>Percentages do <strong>NOT</strong> include the border or the padding.</p>
+                <p>CSS can also using percentages for scaling things up or down.</p>
+            </div>
+
+            <div>
+                <h2>Separating Style</h2>
+                <p><strong>&ltlink rel="stylesheet" href="<em>URL/Filepath of .css</em>"&gt</strong></p>
+                <p>
+                    For this document, the CSS is linked like this:<br>
+                    &ltlink rel="stylesheet" href="../style.css"&gt
+                </p>
+                <p>This <strong><em>link</em></strong> element goes inside the <Strong>head</strong> of the HTML document. This will take place of the <strong><em>style</em></strong> element.</p>
+            </div>
+
+            <div>
+                <h2>Color</h2>
+                <ul>
+                    <li>
+                        <strong>RGB</strong> - Red Green Blue<br>
+                        You can make any color you want with RGB
+                        <ul>
+                            <li>
+                                Delcared with percentage: 0% - 100%<br>
+                                <em class="RGB_practice_percent">Example with CSS - background-color: rgb(100%, 50%, 0%);</em>
+                            </li>
+                            <li>
+                                Declared with values: 0 - 255<br>
+                                <em class="RGB_practice_value">Example with CSS - background-color: rgb(25, 150, 225);</em>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Hex</strong> - Hexidecimal (base 16)<br>
+                        Declared with values: 00 - FF.
+                        <ul>
+                            <li>
+                                Hex values go from 00 through 09 and then from AA through FF
+                            </li>
+                            <li>
+                                All hex values have 6 units    
+                            </li>
+                            <li>
+                                <em class="hex_practice">Example with CSS - background-color: #000000; color: #ffffff;</em>
+                            </li>
+                            <li>
+                                Each "pair" of the six digits in the hexidecimal refer to R, G, and B.<br>
+                                For example: <span class="udacity_blue">Udacity's blue is #02b3e4</span><br>
+                                "02" = 1% red, "b3 = 70% green, "e4 = 89% blue.<br>
+                                <em class="udacity_blue">#02b3e4 = rgb(1%, 70%, 89%) = rgb(2, 179, 228)</em>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="rgb_test">
+                        <strong>HSL</strong> - Hue, Saturation, Lightness
+                        We won't worry about getting into that right now but is useful to know about.
+                    </li>
+                </ul>
+                <img src="https://video.udacity-data.com/topher/2018/July/5b43e2d4_additive-color-mixing-simulated/additive-color-mixing-simulated.png" alt="rgb lighting">
+            </div>
+
+            <div>
+                <h2>Fonts</h2>
+                <p><strong>font-family</strong> = typeface (font as we may think of it in relation to word processors); like <span style="font-family: 'Times New Roman'">Times New Roman</span>, <span style="font-family: Helvetica">Helvetica</span> or <span style="font-family: Impact">IMPACT</span></p>
+                <p>If the browser or device doesn't understand the font chosen, it'll revert a default <em>font-family</em></p>
+                <ul>
+                    <li>
+                        <strong>typeface</strong> is a group of related fonts<br>
+                        Times New Roman is a typeface
+                    </li>
+                    <li>
+                        <strong>font</strong> is a specific version of a typeface.<br>
+                        'Times New Roman', 'Times New Roman italic' and 'Times New Roman bold' are all different fonts. 
+                    </li>
+                </ul>
+                <p>The <strong>"quotes"</strong> are recommeded for font families that have spaces in their names like "Times New Roman" compared to Helvetica.</p>
+                
+                <h3>Generic Font Families and Font Stacks</h3>
+                <p>If you don't care what font is shown but know what style font you want, you may choose a generic font.<br>
+                It is best practice to add a generic font at the end of the font font list.</p>
+                <h3>Generic font-family:</h3>
+                <ul>
+                    <li>
+                        <span style="font-family: serif">serif</span>
+                    </li>
+                    <li>
+                        <span style="font-family: sans-serif">sans-serif</span>
+                    </li>
+                    <li>
+                        <span style="font-family: cursive">cursive</span>
+                    </li>
+                    <li>
+                        <span style="font-family: fantasy">fantasy</span>
+                    </li>
+                    <li>
+                        <span style="font-family: monospace">monospace</span>
+                    </li>
+                </ul>
+                <p>Generic fonts are used more as a fallback if the browser doesn't have the declared font in the style.</p>
+                <h3>Font Stacks</h3>
+                <p>A list of font familys; usually ending with the generic.</p>
+                <p class="font_stack">Example: Windows has Constantia but it's only available on Windows. We can set the next font to take place to <strong><em>Georgia</em></strong>. If the browser doesn't have that font, we can utalize any serif font.</p>
+                <p>This is written as:<br>
+                .class {font-family: Constantia, Georgia, serif;}</p>
+
+                <h3>Font Properties</h3>
+                <ul>
+                    <li>
+                        <strong>font-size:</strong> Measured in point(pixel) or px<br>
+                        How big the font is
+                        
+                    </li>
+                    <li>
+                        <strong>bold</strong>, <em>italic</em>, and <u>underline</u>
+                        <ul>
+                            <li>
+                                <strong>font-weight: bold</strong>
+                            </li>
+                            <li>
+                                <em>font-style: italic;</em>
+                            </li>
+                            <li>
+                                <u>text-decoration: underline</u>
+                            </li>
+                        </ul>
+                        These all behave differently between HTML elements and CSS style
+                    </li>
+                </ul>
+            
+                <h3>Shorthand <mark>font</mark> Property</h3>
+                <p>
+                    Instead of typing out:<br>
+                    ".class { font-style: italic; font-size: 24px; font-family: Times; }"<br>
+                    We can use the shorthand:<br>
+                    ".class { font: italic 24px Times; }"
+                </p>
+                <img src="\images\font_shorthand.png" alt="font shorthand">
+                <p>using the shorthand <em>font</em>, you have to write the font features in a specific order:</p>
+                <ol>
+                    <li>font-style</li>
+                    <li>font-variant</li>
+                    <li>font-weight</li>
+                    <li>font-size (line-height)</li>
+                    <li>font-family</li>
+                </ol>
+                <p><em>Written out:</em> { font: <em>font-style font-variant font-weight font-size font-family; }</em><br>
+                <em>Example:</em> font: italic small-caps bold 24px Helvetica</p>
+                <p><em><strong>Note:</strong> font-size and font-family values are required when using <mark><strong>font</strong></mark></em>.</p>
+                <p></p>
+                <h3>HTML vs CSS</h3>
+                <h4>&ltem&gt vs italic</h4>
+                <h4>&ltstrong&gt vs bold</h4>
+                <p>The <strong>&ltem&gt</strong> and <strong>&ltstrong&gt</strong> elements identify the <em>meaning</em> of the text.<br>
+                This can be helpful for screen-readers, smart speakers, etc...</p>
+                <p><strong>Italic</strong> and <strong>bold</strong> are aesthetics changing how text appears on the screen.</p>
+            </div>
+
+
+        </div>
+
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../notes.html">HTML Notes</a></li>
+                    <li><a href="./css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li>future notes go here</li>
+                    <li><a href="./projects.html">Projects</a></li>
+                    <li><a href="./test_page.html">Testing workplace</a></li>
+                </ul>
+                <h3>Quick Links:</h3>
+                <ul>
+                    <li><a href="https://developers.google.com/fonts/docs/getting_started">Google Fonts Dcoumentation</a></li>
+                    <li><a href="https://fonts.google.com/">Google fonts</a></li>
+                </ul>
+            </div>
+        </nav>
+    </body>
+</html>

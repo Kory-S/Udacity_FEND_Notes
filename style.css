@@ -1,0 +1,232 @@
+body {
+}
+
+div {
+    border: 2px solid red;
+    margin: 10px;
+}
+
+p {
+    border: 2px solid purple;
+}
+
+img {
+    height: 250px;
+    width: auto;
+    max-width: 500px;
+}
+
+.review {
+    background-color: rgb(183, 255, 183);
+    border: 2px solid blue
+}
+
+.boilerplate {
+    background-color: lightskyblue;
+    border: 2px dotted green;
+}
+
+nav {
+    margin: 20px;
+    background-color: pink;
+    text-align: center;
+    padding: 5px;
+    border: 2px solid darkgreen;
+}
+
+li .combine {
+    color: whitesmoke;
+    background-color: darkslategray;
+}
+
+.boxes_example {
+    background-color: lightcoral;
+    width: 250px;
+    height: auto;
+    padding: 25px;
+    border: 5px solid greenyellow;
+    margin: 25px;
+    float: left;
+}
+
+.RGB_practice_percent {
+    background-color: rgb(100%, 50%, 0%);
+}
+
+.RGB_practice_value {
+    background-color: rgb(25, 150, 225);
+}
+
+.hex_practice {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.udacity_blue {
+    background-color: #02b3e4;
+}
+
+.rgb_test {
+    background-color: rgb(90%,90%,90%);
+}
+
+.font_stack {
+    font-family: Constantia, Georgia, serif;
+}
+
+h4 {
+    margin: 0px;
+}
+
+strong {
+    background-color: rgb(211,211,211,.5);
+}
+
+.flexbox_box {
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    font: bold 30px sans-serif;
+    border: 0;
+    margin: 0;
+}
+
+.flexbox_red {
+    background-color: red;
+}
+
+.flexbox_green {
+    background-color: green;
+}
+
+.flexbox_yellow {
+    background-color: yellow;
+}
+
+.flexbox_display {
+    display: flex;
+}
+
+.flexbox_flexwrap {
+    flex-wrap: wrap;
+}
+
+.flexbox_container {
+    width: 200px;
+    border: 5px solid black;
+}
+
+.flexbox_container .flexbox_box {
+    width: 100px;
+    font-size: 15px;
+}
+
+.html_css_container {
+    display: flex;
+    flex-wrap: wrap;
+    width:auto;
+    border: 5px dotted blue;
+}
+
+.html_css_box {
+    width: auto;
+    border: 5px solid black;
+    margin: 0;
+    padding: 0;
+}
+
+.html_css_container .html_example {
+    background-color: #f0652950;
+}
+
+.html_css_container .css_example {
+    background-color: #2965f150;
+}
+
+
+
+.testing_example_tictactoe {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.testing_example_tictactoe li {
+    background-color: lightblue;
+    margin: 5px;
+    width: 90px;
+    height: 90px;
+    font: bold 80px Helvetica, sans-serif;
+    text-align: center;
+    list-style: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Project 1 CSS - Animal Trading Card */
+/*Added "p1_" to all class and types to identify what the CSS is for */
+.p1_img {
+    width: 300px;
+    height: auto;
+    padding: 5px;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.p1_h3 {
+    padding: 5px;
+}
+
+.p1_p {
+    border: 0px;
+}
+
+.p1_card {
+    padding: 5px;
+    width: 312px;
+    height: auto;
+    margin: 5px;
+    border: 2px solid #533b23;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #2d2013;
+    background-color: #b28c0525;
+}
+
+.p1_interesting_fact {
+    font-style: italic;
+}
+
+.p1_card .p1_text_info {
+    width: 286px;
+    height: auto;
+    background-color: #a17e4650;
+    box-shadow: none;
+}
+
+.p1_text_info .p1_label {
+    font-weight: bold;
+}
+
+.p1_text_info .p1_ul {
+    padding: 0;
+}
+
+.p1_text_info .p1_li {
+    list-style: none;
+}
