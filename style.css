@@ -185,11 +185,11 @@ strong {
 }
 
 .flexbox_container_1 {
-
+    display: flex;
 }
 
 .flexbox_container_2 {
-    
+    display:flex
 }
 
 .flexbox_container_3 {
