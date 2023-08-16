@@ -140,9 +140,119 @@
                 </p>
             </div>
 
+            <div>
+                <h2>Flexbox Continued...</h2>
+                <p>To use flexbox, the container needs the <strong>display</strong> property to <strong>flex</strong>.</p>
+                <p>By setting the container element to <strong>display: flex;</strong>, all elements inside become flex items. These items can be laid out in a customized way following design patterns like <em>columns</em>, <em>rows</em>, <em>alignment</em>, and <em> distribution</em>.</p>
 
+                <h3>Property - flex-direction</h3>
+                <p><strong>.container { display: flex; flex-direction: row-reverse; }</strong></p>
+                <ol class="container_flexbox_row">
+                    <li class="flexbox_red item_flexbox"><p>Box 1</p></li>
+                    <li class="flexbox_green item_flexbox"><p>Box 2</p></li>
+                    <li class="flexbox_yellow item_flexbox"><p>Box 3</p></li>
+                </ol>
+                <p>As seen above, the css <strong>flex-direction: row-reverse</strong>allowed the child elements of the container to be in a row, but it reversed the row despite being an ordered list.<br>
+                Other css values for <strong>flex-direction</strong> are <strong>row</strong>, <strong>column</strong>, and <strong>column-reversed</strong></p>
+                
+                <h3>Property - justify-content</h3>
+                <p><strong>.container { justify-content: center; }</strong></p>
+                <p>This identifies were the content of the container should adjust to on the page.</p>
+                <h3>Property - order</h3>
+                <p>The <strong>.item { <mark>order</mark>: # }</strong> property allows us to change the order of specific container items regardless of where they may appear in our HTML.</p>
 
+                <h3>Axis and Direction with Flexbox</h3>
+                <p>Defined by <strong>flex-direction</strong> which has four possible values:</p>
+                <ol>
+                    <li>row</li>
+                    <li>row-reverse</li>
+                    <li>column</li>
+                    <li>column-reverse</li>
+                </ol>
+                <p><strong>row</strong> and <strong>row-reverse</strong> will create the main axis horizontally or <mark>inline</mark> direction.</p>
+                <p><strong>column</strong> and <strong>column-reverse</strong> will create the main axis vertically or <mark>block</mark> direction.</p>
+                <p><mark>block</mark> or <mark>inline</mark> refer to the CSS display settings</p>
+                <p>Depending on which axis (vertical=row or horizontal=column) will affect how how display properties and their values are displayed on the page.
+                You can see how this is affected below with CSS <strong>justify-content: center;</strong>.</p>
+                <h4>Nothing set:</h4>
+                <ol>
+                    <li class="flexbox_red item_flexbox"><p>Box 1</p></li>
+                    <li class="flexbox_green item_flexbox"><p>Box 2</p></li>
+                    <li class="flexbox_yellow item_flexbox"><p>Box 3</p></li>
+                </ol>
+                <h4>Horizontal:</h4>
+                <ol class="container_flexbox_row">
+                    <li class="flexbox_red item_flexbox"><p>Box 1</p></li>
+                    <li class="flexbox_green item_flexbox"><p>Box 2</p></li>
+                    <li class="flexbox_yellow item_flexbox"><p>Box 3</p></li>
+                </ol>
+                <h4>Vertical:</h4>
+                <ol class="container_flexbox_column">
+                    <li class="flexbox_red item_flexbox"><p>Box 1</p></li>
+                    <li class="flexbox_green item_flexbox"><p>Box 2</p></li>
+                    <li class="flexbox_yellow item_flexbox"><p>Box 3</p></li>
+                </ol>
+
+                <h3>Ordering Elements with Flexbox</h3>
+                <p>Several ways to order items in the flexbox container. A few ways are:</p>
+                <ul>
+                    <li>
+                        <strong>row-reverse, column reverse</strong>: <em>keyword</em>-reverse - used on <strong>flex-direction</strong> setting
+                    </li>
+                    <li>
+                        <strong>Order of HTML code</strong>: Move the lines of code to create the order
+                    </li>
+                    <li>
+                        <strong><em>order</em> CSS property</strong>: Specifically for flex items - HTML elements inside a container that has <strong>display:flex;</strong> property
+                    </li>
+                </ul>
+
+                <h3>Aligning Items & Justifying Content with Flexbox</h3>
+                <ul>
+                    <li>
+                        <strong>align-items</strong>: Aligns the items on the cross axis<br>
+                        <strong>align-items</strong> values:
+                    </li>
+                    <ul>
+                        <li>stretch</li>
+                        <li>flex-start</li>
+                        <li>flex-end</li>
+                        <li>center</li>
+                    </ul>
+                    <li>
+                        <strong>justify-content</strong>: Aligns the items on the main axis<br>
+                        <strong>justify-content</strong> values:
+                    </li>
+                    <ul>
+                        <li>flex-start</li>
+                        <li>flex-end</li>
+                        <li>center</li>
+                        <li>space-around</li>
+                        <li>space-between</li>
+                        <li>space-evenly</li>
+                    </ul>
+                </ul>
+            </div>
+
+            <div>
+                <h2>CSS Grid</h2>
+                <h3>Grid vs Flexbox</h3>
+                <p><strong>Grid</strong> is useful for creating the page layout<br>
+                <strong>Flexbox</strong> is how the content flows on the page through the regions within the grid</p>
+                <p>To use <strong>gird</strong>, use CSS: <strong>.container { display: grid; }</strong></p>
+                <p>The image below breaks down how CSS display <strong>grid</strong> and <strong>flexbox</strong> can work together.</p>
+                <img src="https://video.udacity-data.com/topher/2019/August/5d4dbc95_gridvflex/gridvflex.png" alt="Grid and Flexbox example together">
+                <ul>
+                    <li>Grid is two dimensional, while flex is onedimensional</li>
+                    <li>Grid is layout first, while flexbox is content first</li>
+                    <li>Flex is for components of an app, grid is for the app's layout of each component</li>
+                </ul>
             
+            
+            </div>
+
+
+
         </div>
 
         <nav>
