@@ -20,6 +20,7 @@
                 <h3>Quick Links:</h3>
                 <ul>
                     <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox">Basic concepts of flexbox</a></li>
+                    <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">A complete guide to CSS grid</a></li>
                 </ul>
 
             </div>
@@ -142,6 +143,7 @@
 
             <div>
                 <h2>Flexbox Continued...</h2>
+                <img src="https://css-tricks.com/wp-content/uploads/2022/02/css-flexbox-poster.png" alt="CSS flexbox poster">
                 <p>To use flexbox, the container needs the <strong>display</strong> property to <strong>flex</strong>.</p>
                 <p>By setting the container element to <strong>display: flex;</strong>, all elements inside become flex items. These items can be laid out in a customized way following design patterns like <em>columns</em>, <em>rows</em>, <em>alignment</em>, and <em> distribution</em>.</p>
 
@@ -247,8 +249,103 @@
                     <li>Grid is layout first, while flexbox is content first</li>
                     <li>Flex is for components of an app, grid is for the app's layout of each component</li>
                 </ul>
-            
-            
+
+                <h3>Rows & Columns</h3>
+                <p><strong>Rows</strong> are horizontal; above and below each other.<br>Columns are vertical; left and right each other.</p>
+                <p>After setting display to grid, the next step is to set the rows and columns:</p>
+                <ul>
+                    <li>
+                        <strong>grid-template-columns</strong> - Defines how many column (vertical) sections the page should be divided into<br>
+                        The values for this property are the explicit value for each column and the number of columns is defined implicitly by the number of values entered. Example:<br>
+                        <strong>grid-template-columns: 60px 60px 60px;</strong><br>
+                        This would breate three columns 60px in size. you had two items inside your grid and didn't set their position explicitly, the first item would be placed in the first column and the second item in the second.
+                    </li>
+                    <li>
+                        <strong>grid-template-rows</strong> - Defines how many rows (horizontal) sections the page should be divided into<br>
+                        Follows the same logic as <strong>grid-template-columns</strong><br>
+                        <strong>grid-template-rows: 160px 60px 40px</strong><br>
+                        Creates three rows of their respective sizes.
+                    </li>
+                    <li>
+                        grid-gap - Sets the distance between each row and column
+                    </li>
+                </ul>
+                <p>These properties are defined in the parent container.</p>
+                <div class="grid_container">
+                    <div class="grid_box grid_box_1">Box 1</div>
+                    <div class="grid_box grid_box_2">Box 2</div>
+                    <div class="grid_box grid_box_3">Box 3</div>
+                    <div class="grid_box grid_box_4f">Box 4</div>
+                </div>
+                
+                <h3>Grid Areas</h3>
+                <p><strong>grid-area</strong> specifies a particular area or set of rows and columns that a gird item occupies. It is applied ot the grid item itself.<br>
+                Example:<br>
+                <strong>.item { gird-area: 1/2/3/3;<br>/* row-start/column-start/row-end/column-end */ }</strong><br>
+                <strong>gid-area</strong> is shorthand for <strong>grid-row-start</strong>, <strong>grid-column-start</strong>, <strong>grid-row-end</strong>, and <strong>grid-column-end</strong>.</p>
+                <p><strong>grid-templaye-areas</strong></p>
+                <h4>Advanced Grid</h4>
+                <p>
+                    <strong>fr</strong> - fills remaining space<br>
+                    Size is determined by factoring in vh minus space already used and the grid-gap.
+                    If all grid-template row or columns are aligned with 1fr, it will evenly space everything
+                </p>
+                <p>
+                    <strong>repeat()</strong> - repeats the same thing as many times as defined<br>
+                    Instead of wrighting<br><strong>grid-template-columns: 1fr 1fr 1fr 1fr 1fr</strong>,<br> repeat can be used:<br><strong>grid-template-columns: repeat(5, 1fr);</strong>
+                </p>
+                <p>
+                    <strong>minmax()</strong> - determines min and max size of rows or columns<br>
+                    Example: <strong>grid-auto-rows: minmax(100px, autopx);</strong><br>
+                    In this example, the smallest a row can be is 100px, but it can be as large as the content of the row is. 
+                </p>
+            </div>
+
+            <div>
+                <h2>Media Queries</h2>
+                <p>
+                    Media queries with breakpoints help the webiste display correctly across multiple different screen sizes.<br>
+                    <em>Example:</em> <strong>@media(min-width:900px){ .class{}}</strong><br>
+                    This means whenever a display has a width 900px or larger, it will display the .class properties under the media query.
+                </p>
+                <p>
+                    <strong><em>breakpoints</em></strong> are the <strong>viewport</strong> width at which we want our design to change.<br>
+                    We can write CSS inside the media query with a set breakpoint causing the viewport width of the device's screen size to affect how the wepage is laid out. Only the CSS that we want changed can go inside the media query - the original CSS rules will still apply and only the CSS inside the media query will override any pre-exisiting rules if the breakpoints rules are met.
+                </p>
+                <p>
+                    <strong>viewport</strong> - the area of the window in which web content can be seen. We use the dimensions of the viewport (usually the width, but sometimes the height) as the basis of our media queries.
+                </p>
+                <h3>Adding Media Queries in Code</h3>
+                <p>
+                    Media queries are used to set different style rules for different devices or sized screens. We use breakpoints to set the condition of a media query. The logic is:<br>
+                    <strong>@media(<em>feature:value</em>)</strong>
+                </p>
+                <p>
+                    <strong>Tip: </strong>It can help thorugh development of a website to start with the smallest screen width first and work the way up.
+                    Placing the media queries at the bottom of the CSS stylesheet can help prevent cascading from the media query effecting smaller screen.
+                </p>
+                <p class="media_query_example">
+                    You can test how a media query works by resizing the window to see how this paragraph is affected. Review the CSS to see how this wosrks.
+                </p>
+                <p>
+                    Correct syntax for a media query:<br>
+                    <strong>
+                        @media(min-width: 900px) {<br>
+                            .class_name {<br>
+                                properties: values;<br>
+                            }
+                    </strong>
+                </p>
+                <p>Setting multiple screen size breakpoints, you use the keyword <strong>and</strong>.</p>
+                <p>
+                    <em>Example:</em><br>
+                    <strong>@media(min-width:600px) and (max-width:900px)</strong>
+                </p>
+
+
+
+
+
             </div>
 
 
@@ -268,6 +365,7 @@
                 <h3>Quick Links:</h3>
                 <ul>
                     <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox">Basic concepts of flexbox</a></li>
+                    <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">A complete guide to CSS grid</a></li>
                 </ul>
 
             </div>
