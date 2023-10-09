@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "utf-8">
+        <title>HTML Notes</title>
+        <link rel="stylesheet" href="../style.css">    
+    </head>
+
+    <body>
+        
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="beyond_basics_js.html">Beyond the Basics JavaScript</a></li>
+                    <li><a href="js_loops.html">JavaScript Loops</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="test_page.html">Testing workplace</a></li>
+                </ul>
+                <h2>Useful Links</h2>
+                <ul>
+                    <li><a href="https://developer.chrome.com/docs/devtools/">Chrome DevTools</a></li>
+                    <li><a href=""></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/console">JS console methods</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <h1>Intro To JavaScript</h1>
+        <h2>JavaScript Console</h2>
+        <p>Open developer tools<br>CLick on "Console"</p>
+        <p>Writing code in your browser is a thing to test new code snipets to determine what they do.<br>This is not recommended to write larger blocks of code as this can get tedious.</p>
+        <p>Some useful shortcuts to open these developer/console are <strong>ctrl+shift+J</strong></p>
+
+        <h2>Developer tools on different browsers</h2>
+        <p>Each browser may have its own shortcuts and devtools different from one another.</p>
+        
+        <a href="https://developer.chrome.com/docs/devtools/"><h3>Google Chrome</h3></a>
+        <p>You can open Chrome DevTools a few ways in Google Chorme:</p>
+        <ul>
+            <li>Right Click > Inspect</li>
+            <li>Chrome Settings Menu > More Tools > Developer Tools</li>
+            <li>Shortcut: ctrl + shift + I</li>
+        </ul>
+
+        <a href="https://firefox-source-docs.mozilla.org/devtools-user/index.html"><h3>Mozilla Firefox</h3></a>
+        <p>Firefox has a a Developer Edition Browser tailored for developers featuring the latest features and experimental developer tools.</p>
+        <p>You can view the developer edition here:<br><a href="https://www.mozilla.org/en-US/firefox/developer/">Firefox Browser Developer Edition</a></p>
+        <p>To open FireFox Developer Tools:</p>
+        <ul>
+            <li>Right Click > Inspect Element</li>
+            <li>Firefox Settings Menu > Developer</li>
+            <li>Shortcut: ctrl + shift + I</li>
+        </ul>
+
+        <a href="https://developer.microsoft.com/en-us/windows/"><h3>Microsoft Edge</h3></a>
+        <p>Microsoft Edge introduced imporvements to the <strong>F12</strong> developer tools seen in IE.
+        The new tools always run so no reloud is required.<br>
+        Developer tools documentation is fully available on <a href="https://github.com/MicrosoftDocs/edge-developer">Github</a></p>
+        <p>To open Microsoft Edge Developer Tools:</p>
+        <ul>
+            <li><strong>F12</strong></li>
+            <li>Right Click > Inspect</li>
+            <li>Shortcut: ctrl + shift + I</li>
+        </ul>
+
+        <h2>console.log</h2>
+        <p>Developer tools are a great way to experiment without saving changes to your code. The console will tell you any JS warnings or erros on the page, display any output or print with <strong>console.log</strong></strong.></p>
+        <h3>Using <strong>console.log</strong> statements</h3>
+        <p><strong>console.log</strong> is used to display content to the JavaScript console.<br>
+        <em>Example: </em><strong>console.log("Hellow world!");</strong></p>
+        <img class="js_img" src="../images/JS-hello_world.png" alt="console.log('Hello world!');">
+        <p>This may be helpful when needing to debug code.</p>
+        <h3>Test it out</h3>
+        <p>In the console, try the following:<br>
+        <strong>for (var i = 0; i < 10; i++){<br>--console.log(i);<br>}</strong></p>
+        <img class="js_img" src="../images/first_for_loop.png" alt="for loop">
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/console"><p>Other <strong>console</strong> methods</p></a>
+
+        <h2>Data Types</h2>
+        <p>Data/data types hlep organize information and determine how our program will run.</p>
+        <p>Primitive data types of JavaScript</p>
+        <ul>
+            <li>nubmers</li>
+            <li>strings</li>
+            <li>booleans</li>
+            <li><em>undefined</em></li>
+            <li><em>null</em></li>
+        </ul>
+
+        <h2>Numbers</h2>
+        <p><strong>Number</strong> data types include any positive, negative or decimal value.
+        Entering a number in the console will return it</p>
+        <h3>Arithmetic operations</h3>
+        <p>Calculations are performed by typing out an expression</p>
+        <img src="../images/arithmetic_operators_js.png" alt="arithmetic_operators_js">
+        <h3>Comparing numbers</h3>
+        <p>You can compare greater than <strong>a&gtb</strong>, less than <strong>a&ltb</strong>, or equal <strong>a==b</strong>.<br>
+        Comparisions will return true or false.</p>
+        <img src="../images/comparison_operators.png" alt="comparison_operators">
+        <p><strong>Note:</strong><em>Comparison operators return true or false; true/false are <strong>boolean data type</strong></em></p>
+
+        <h2>Strings</h2>
+        <p>Strings are any character or compination of characters, including emojis.</p>
+        <p>To declare a string, you must use matching quotes at the beginning and end of the string.
+        Without quotes, the data type is registered as a <em>variable</em>.</p>
+        <p><em>example: </em><strong>console.log("example string");</strong></p>
+        <h3>String concatenation</h3>
+        <p>Adding strings together is called concatenating.</p>
+        <p>
+            To concatenate strings together:<br>
+            "Hello " + "world!"
+            <strong>console.log("Hello " + "world!");</strong>
+            <em>Note:</em> Strings do include whitespace or spaces.
+        </p>
+
+        <h3>Indexing Strings</h3>
+        <p>To access individual characters in a string, use the character's location (or index) starting with <strong>0</strong>.<br>
+        <em>Example: </em><strong>"Example"[2]</strong> will return "a"</p>
+        <p>
+            Usually the index of a string will be tied to a variable<br>
+            <em>Exapmle: </em><strong>const animal = "dog";<br>
+            animal[1];</strong> <em>Returns "o"</em>
+        </p>
+        <img src="../images/udnerstanding_indexing.png" alt="indexing locations">
+
+        <h3>Escaping Strings</h3>
+        <p>
+            Some cases a string may need to be created with quotes. Normally just typing a string with quotes will end the string and cause an error.<br>
+            <strong>var example = "Typing a string, "with quotes will throw an error"."</strong><br>
+            <img src="../images/escaping_string_error.png" alt="escaping_string_error">
+            To avoid this error, you will need to add <strong>\</strong> in front of the quote in the string to avoid this<br>
+            <strong>var example = "Typing a string, \"with quotes will not throw an error\"."</strong>
+            <img src="../images/escaping_string_no_error.png" alt="escaping_string_no_error">
+        </p>
+        <p>JavaScript has a few special charactes to avoid errors when typing code.</p>
+        <img src="../images/special_characters.png" alt="special_characters">
+
+        <h2>Variables</h2>
+        <p>
+            Variables store data<br>
+            To create a variable in JavaScript, use <strong>var</strong> keyword followed by the name of the variable.
+            Then the assignment variable <strong>=</strong> and the value.<br>
+            <em>Example: </em><strong>var dog_name = "socks";</strong> or <strong>var age = 27;</strong><br>
+            to update the variable after it has been declared - <strong>age = age + 1;</strong>
+        </p>
+        <p>JavaScript has three types of variables: <strong>var</strong>, <strong>let</strong>, and <strong>const</strong></p>
+        <p><strong>var</strong> has a global scope: It can be used anywhere in the program.</p>
+        <p><strong>let</strong> should be used when a value of a variable may change</p>
+        <p><strong>const</strong> should be used when the value of a variable is known and will <em>not</em> change.</p>
+        <p>The default choice should typically be <strong>const</strong> to avoid the variable being updated unintentionally which could lead to bugs.<br>
+        <strong>let</strong> should be used only when you know a variable will have an updated value as the code runs.<br>
+        Code may always be revised; however, it is much easier catching a bug caused by a variable if it was <strong>const</strong> and it attempted to be changed later on</p>
+        
+        <h2>Booleans</h2>
+        <p>Boolean values can only be <strong><em>TRUE</em></strong> or <strong><em>FALSE</em></strong>.</p>
+        <p>Booleans are mainly used to evaluate the outcome of conditionals (comparisions).</p>
+
+        <h2>Null, Undefined, and NaN</h2>
+        <ul>
+            <li><strong>null</strong>: Value of nothing</li>
+            <li><strong>undefined</strong>: Absence of value</li>
+        </ul>
+        <h3>null</h3>
+        <p>
+            Similar to how a variable can be set to a value of 10, a variable may be intentionally set to a value of null.<br>
+            <strong>var x = 10;</strong><br>
+            <strong>var x = null;</strong>
+        </p>
+
+        <h3>undefined</h3>
+        <p>
+            Unlike how null has a <em>value</em>> set to <em>nothing</em>, undefined means there is no <em>value</em> set.<br>
+            If a variable has been declared without setting a value or no variable has been declared but is trying to be used, you will get a variable declared <em>undefined</em>.
+        </p>
+        <p>
+            The following example explains why an "undefined" might come up:<br>
+            <strong>
+                var = x;<br>
+                console.log(x);<br>
+                console.log(y);<br>
+            </strong>
+        </p>
+
+        <h3>NaN</h3>
+        <p><strong>NaN</strong> stands for "Not-A-Number". Often indicates an error when returning an error with a nubmer operation.</p>
+
+        <h2>If...Else Statements</h2>
+        <p>If...else statements allow execution of certain pieces of code based on condistions being met.</p>
+        <p>
+            <strong>
+                if {<br>
+                    condition 1 met = run code<br>
+                }<br>
+                else {<br>
+                    condition 2 met = run this code<br>
+                }
+            </strong>
+        </p>
+
+        <h2>Logical Operators</h2>
+        <img src="../images/logical_operators.png" alt="logical operators">
+        <img src="../images/truth_tables.png" alt="truth_tables">
+        <p>Truth tables are used to represent all possible combinations of inputs that return a boolean value. It breaks down the returned result of <strong>&&</strong> and <strong>||</strong>.</p>
+
+
+
+
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="beyond_basics_js.html">Beyond the Basics JavaScript</a></li>
+                    <li><a href="js_loops.html">JavaScript Loops</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="test_page.html">Testing workplace</a></li>
+                </ul>
+            </div>
+        </nav>
+    </body>
+</html>

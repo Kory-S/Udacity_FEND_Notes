@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "utf-8">
+        <title>HTML Notes</title>
+        <link rel="stylesheet" href="../style.css">    
+    </head>
+
+    <body>
+        
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="intro_to_javascript.html">Intro to JavaScript</a></li>
+                    <li><a href="js_loops.html">JavaScript Loops</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="test_page.html">Testing workplace</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <h1>Beyond the Basics JavaScript</h1>
+
+        <h2>Truthy and Falsy</h2>
+        <p>
+            Every value in JavaScript has an inherent boolean value.
+            When that value is evaluated in the context of a boolean expression, the value will be transformed into that inherent boolean value.
+        </p>
+        <h3>Falsy values</h3>
+        <p>A value is <strong>falsy</strong> if it converts to <strong>false</strong> when evaluated in a boolean context.</p>
+        <p>List of all falsy values:</p>
+        <ul>
+            <li>Boolean value <strong>false</strong></li>
+            <li><strong>null</strong></li>
+            <li><strong>undefined</strong></li>
+            <li>the number <strong>0</strong></li>
+            <li>an empty string - <strong>""</strong></li>
+            <li><strong>NaN</strong></li>
+        </ul>
+        <h3>Truthy values</h3>
+        <p>A value is <strong>truthy</strong> if it converts to <strong>true</strong> when eveluated in a boolean context.</p>
+        <p>Essentially, if it's not in the list of falsy values, then it's truthy.</p>
+
+        <h2>Ternary Operator</h2>
+        <p>
+            instead of writing out <strong>if(<em>variable</em> === true)</strong> or <strong>if(<em>variable</em> === false)</strong><br>
+            We can shorten this with <strong>if(<em>variable</em>)</strong> <em>(returns if variable is true)</em> or <strong>if(!<em>variable</em></strong> <em>(returns in variable is false)</em>
+        </p>
+        <p><strong>Ternary operator</strong> provides shortcut alternatives to writing lengthy <strong>if...else</strong> statements.</p>
+        <p>
+            Ternary operator psuedo code:<br>
+            <strong>conditional ? (if condition is true) : (if condition is flase)</strong><br>
+            To use the ternary operator, first provide a conditional statement on the left-side of the ?.
+            Then, between the ? and : write the code that would run if the condition is true and on the right-hand side of the : write the code that would run if the condition is false.<br>
+            For example, you can rewrite the example code above as:<br>
+            <strong>
+                const greenLight = ture;<Br>
+                const color = greenLight ? "green" : "red";<br>
+                console.log(color);
+            </strong><br>
+            <em>
+                prints: "green"<br>
+                If you breakdown the code, the condition isGoing is placed on the left side of the ?.
+                Then, the first expression, after the ?, is what will be run if the condition is true and the second expression after the, :, is what will be run if the condition is false.
+            </em>
+            <img src="../images/if_else_vs_ternary.png" alt="if_else_vs_ternary">
+        </p>
+
+        <h2>Switch Statement</h2>
+        <p>Switch statements are typically used in place of repeating <strong>if...else</strong> statements.</p>
+        <pre>
+            <strong>
+<em>Example:</em><br>
+    let option = 4;
+    switch (option){
+        case 1:
+            console.log("You selected option 1");
+            break;
+        case 2:
+            console.log("You selected option 2");
+            break;
+        case 3:
+            console.log("You selected option 3");
+            break;
+        case 4:
+            console.log("You selected option 4");
+            break;
+        case 5:
+            console.log("You selected option 5");
+            break;
+        case 6:
+            console.log("You selected option 6");
+            break;
+    }</strong>
+        </pre>
+        <p>Although <strong>break;</strong> is not required on the last switch case, it it best to keep code consistent.<br>
+        <em>Note: If <strong>break;</strong> is not added at the end of each case, the code will run each case following the option that triggers.</em></p>
+        <h3>Default Case</h3>
+        <p>
+            If none of the cases match, nothing will run; Nothing triggers to tell the code something needs to execute.
+            In most situations it's best practice to add a <strong>default</strong> case to catch situations where none of the <strong>case</strong> statements match.
+        </p>
+        <p>
+            For example, if in the above <strong>switch statement</strong> the variable was set to 10, a <strong>default</strong> case would catch this.<br>
+            To create a <strong>defualt case</strong> to the switch statement, you simple add the following code:<br>
+            <strong>
+                default:<br>
+                    console.log("No valid option selected");
+            </strong> 
+        </p>
+
+        <h2>Leveraging Falling Through</h2>
+        <p>In some situations leveraging "falling-through" behavior of switch statements may be used to your advantage.</p>
+        <img src="../images/leveraging_falling-through.png" alt="leveraging falling-through">
+
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="intro_to_javascript.html">Intro to JavaScript</a></li>
+                    <li><a href="js_loops.html">JavaScript Loops</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="test_page.html">Testing workplace</a></li>
+                </ul>
+            </div>
+        </nav>
+    </body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<htm lang="en">
+    <head>
+        <meta charset = "utf-8">
+        <title>Test Workspace</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+                
+    <body>
+
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="intro_to_javascript.html">Intro to JavaScript</a></li>
+                    <li><a href="beyond_basics_js.html">Beyond the Basics JavaScript</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div>
+            <div>
+                <h1>Loops</h1>
+                <p>Loops repeat blocks of code. They will repeat a block of code until a condition is met or true.</p>
+                <p>Things that will be covered:</p>
+                <ul>
+                    <li><strong>while</strong> loops</li>
+                    <li><strong>for</strong> loops</li>
+                    <li>Nested loops</li>
+                    <li>Assignment operators for more concise code</li>
+                </ul>
+
+                <h2>While Loops</h2>
+                <p>Using a loop will let us iterate over values and repeatedly run a block of code</p>
+                <p>
+                    <em>Example: a while loop</em><br>
+                    <strong>
+                        let x = 1;<br>
+                        while (x &lt= 100) {<br>
+                        console.log("Count = " + x);
+                        x = x + 1;
+                        }
+                    </strong>            
+                </p>
+                <h3>Parts of a while loop</h3>
+                <ul>
+                    <li>When to start: Code that sets up the loop - like defining the starting value</li>
+                    <li>When to stop: The condition that defines when a loop should stop or continue</li>
+                    <li>How to get to the next item: The incrementing or decrementing steps - <strong>x = x * 3</strong> or <strong>x = x - 1</strong></li>
+                </ul>
+                <p>Running an endless loop that cannot end may cause a browser or tab to crash or become unresponsive. To resolve this, the browser may need to be closed or a popup may ask if you want to kill the script or webpage</p>
+
+                <h2>for Loops</h2>
+                <p>It may be easy to forget some of the pieces of a loop with a <strong>while</strong> loop causing an infinite loop crashing the browser.
+                <strong>for</strong> loops gives more control over the looping process.</p>
+                <p>Unlike <strong>while</strong> loops, <strong>for</strong> loops requiring adding the 3 parts of the loop; Start, Stop and <em>step</em></p>
+                <p>
+                    <em>Example:</em><br>
+                    <strong>
+                        for (var i = 0; i &lt 6; i++) {<br>
+                            console.log(i)<br>
+                        }
+                    </strong><br>
+                    <em>Note: In this example, "i++" is another way of writing "i=i+1"</em>
+                </p>
+
+                <p>Writing out how the <strong>for</strong> loop runs can help debug why a loop may not behaving as expected:</p>
+                <img src="../images/for_loop_broken_down.png" alt="for_loop_broken_down">
+                <p>Breaking down the <strong>for</strong> loop:<br>
+                <strong>for (start; stop; step) {}</strong><br>
+                <strong>for (var = i; i &lt 6; i++)</strong></p>
+                <ul>
+                    <li>
+                        <strong>var = 1;</strong> - defines the variable and where the "count" will begin in the loop
+                    </li>
+                    <li>
+                        <strong>i &lt 6;</strong> - defines when the loops will stop. When this case, it will stop when i is no longer less than 6
+                    </li>
+                    <li>
+                        <strong>i++</strong> - defines the step or incrementing/decrementing value in the loop<br>
+                        <em>We can increment/decrement by different values other than 1:<br></em>
+                        <strong>i = i * 2</strong>, <strong>i = i - 3</strong> or <strong>i = i + 5</strong>
+                    </li>
+                </ul>
+                <h3>Nested for loops</h3>
+                <p>For loops can be nested inside each other.</p>
+                <pre><strong>
+            for (var x = 0; x < 3; x = x + 1) {             
+                for (var y = 0; y < 2; y = y + 1){          
+                    console.log ("x = " + x + "y = " + y);  
+                }                                           
+            }                                               </strong></pre>
+                <p>Nested loops don't add anything new; Just another layer of complexity.</p>
+                <p>
+                    With a nested loop, the first loop will be "on hold" so to speak until the child loop completes. 
+                    Then it will continue to the next step in the parent loop... 
+                    and so on until booth the parent and the nested child loops stop conditions have been met.
+                </p>
+                <img src="../images/nested_for_loops.png" alt="nested_for_loops">
+
+                <h2>operators</h2>
+                <ul>
+                    <li>Postfix Operator: <strong>x++</strong> - Returns the value of x <em>then</em> increments the value by 1.<br>
+                    <li>Prefix Operator: <strong>++x</strong> - increments the value by 1 <em>before</em> returning the value of x.
+                </ul>
+                <p>
+                    <strong>x--</strong> or <strong>--x</strong> does essentially the same thing as <strong>++</strong> but subtracts by 1.
+                    We can also increment/decrement with shorthand for multiplication or divison:<br>
+                    <strong>var x = 10;</strong> //sets a value of 10 to the variable x.<br>
+                    <strong>x *= 5;</strong> //This multiples x by 5. The long way of writing this out would be: <strong>x = x * 5;</strong><br>
+                    <strong>x /= 2;</strong> //This divides x by 2. The long way of writing this out would be: <strong>x = x / 2;</strong><br>
+                    This shorthand could be useful to save time when writing longer programs.
+                </p>
+            </div>
+
+            <div>
+                <h2>Functions</h2>
+                <p>
+                    Functions are blocks of code that may be reused without typing the same block of code.
+                </p>
+                <h3>Declaring Functions</h3>
+                <p>
+                    Functions often take <strong>parameters</strong>. The parameter is listed as a variable after the function name in parenthases.
+                    If there are multiple parameters, they are seperated with a comma:<br>
+                    <strong>function funcName(param1, param2){<em>//code goes here...</em>}</strong><br>
+                    A function may have no parameters: <strong>function funcName(){<em>//code goes here...</em>}</strong><br>
+                    This may be used for a process that needs to be repeted with the same expected result each time the function is ran.
+                </p>
+                <h3>Return Statemenets</h3>
+                <p>
+                    <em>Printed value vs returned value:</em><br>
+                    Printed:<br>
+                    <strong>
+                        function sayHello() {<br>
+                            --const message = "Hello!";<br>
+                            --console.log(sayHello);<br>
+                        }
+                    </strong><br>
+                    Returned:<br>
+                    <strong>
+                        function sayHello(){<br>
+                            --const message = "Hello!";<br>
+                            --return message;
+                        }
+                    </strong><br>
+                </p>
+                <p>
+                    With a <strong>return</strong>, the value from the function may be used elsewhere in the code. 
+                    Simply printing or executing the function without returning the value will not allow this to be reused.
+                </p>
+                <h4>How to <em>run</em> a function</h4>
+                <p>Now, to get your function to do something, you have to invoke or call the function using the function name, followed by parentheses with any arguments that are passed into it.</p>
+                <img src="../images/run_function_example.png" alt="How to run a function">
+                <h3>Parameters vs Arguments</h3>
+                <p>
+                    The key difference is where a parameter or argument shows up in code.
+                    A <strong>parameter</strong> is always going to be a <em>variable</em> name and appears in the function declaration.
+                    A <strong>argument</strong> is always going to be a <em>value</em> (any JS data types; number, string, boolean, etc...) and will always appear in the code when a function is called or invoked.
+                </p>
+            </div>
+
+            <div class="review">
+                <h2>Function Recap</h2>
+                <ul>
+                    <li><strong>Funcitons</strong> package up code so you can easily use (and reuse) a block of code.</li>
+                    <li><strong>Parameters</strong> are variables that store data that's passed into a function for the function to use.</li>
+                    <li><strong>Arguments</strong> are the actual data that's passed into a function when it's invoked/called.</li>
+                </ul>
+                <img src="../images/functions_recaps.png" alt="Funcitons recap">
+                <p>
+                    The <strong>function body</strong> is enclosed inside curly brackets.<br>
+                    <strong>Return statments</strong> explicitly make your funtion return a value.<br>
+                    To have a function <em>run</em>, you <strong>invoke</strong> or <strong>call</strong> the function.
+                </p>
+            </div>
+
+            <div>
+                <h2>Return Values</h2>
+                <p><strong>undefined</strong>: A function always returns a value back to the caller. If a return value is not specified, then the function will return <strong>undefined</strong>.</p>
+                <p><strong>console.log("This is an example");</strong> will return <em>undefined</em> because nothing is being returned.</p>
+                <img src="../images/consolelog_vs_return.png" alt="console.log vs return">
+                <p><em><strong>Note:</strong> if a condition is met with a <strong>return</strong> declared in a loop, the loop will break and return the value right away.</em></p>
+                <h3>Using return values</h3>
+                <p>A function's <strong>return value</strong> can be stored in a variable or reused throghout the program as a function argument.</p>
+                <img src="../images/example_fn_as_var.png" alt="Example using function in a variable">
+
+                <h2>Global and Function Scope</h2>
+                <p>JavaScript has three types of scope</p>
+                <ul>
+                    <li>global scope</li>
+                    <li>function scope</li>
+                    <li>block scope</li>
+                </ul>
+                <p><strong>global scope</strong> variables are accessible to any other part of the program.</p>
+                <p><strong>function scope</strong> varibles are only accessible inside the function they are declared in.</p>
+                <p>
+                    <strong>block scope</strong> limits the scope of a variable to the block of code where it is declared.<br>
+                    <em><strong>block scope</strong> only works with <strong>let</strong> and <strong>const</strong> variables</em>
+                </p>
+                <p>JavaScript will look for a variable starting from the current scope and move outwards.</p>
+                <ol>
+                    <li>
+                        The JavaScript engine will start looking in the scope where the variable is requested.
+                    </li>
+                    <li>
+                        If it can't find it in the current scope, it moves out one level and checks again.
+                    </li>
+                    <li>
+                        It keeps moving to the outer scope until it has reached the global scope.
+                    </li>
+                    <li>
+                        If the JavaScript engine checks all of the outer functions and global scope, and it still can't find the identifier then it will return a Reference error.
+                    </li>
+                </ol>
+
+                <h2>Function Expressions</h2>
+                <p>A <strong>function expression</strong> is an expression declared inside a variable.</p>
+                <img src="../images/fnDeclaration_vs_fnExpression.png" alt="Function declaration vs function expression">
+                <h3>Hoisting</h3>
+                <p>
+                    <strong>Hoisting</strong> is another topic that might be the cause of some errors when trying to debug. It is the result of how JavaScript is interpreted by the browser.
+                    Essentially, before any JS code is executed, all function declarations and variables with <strong>var</strong> are <em>hoisted</em>, or raised to the top of the function scope.
+                </p>
+                <p>
+                    To avoid <strong>hoisting</strong> bugs, it's best practice to declare <strong>global scope</strong> functions and variables at the top of the script and <strong>function scope</strong> variables at the top of functions before needing to call it.
+                </p>
+                <h3>Function Expressions and Hoisting</h3>
+                <p><strong>Function expressions are not hoisted</strong>, since they involve variable assignment, and only variable declarations are hoisted. The function expression will not be loaded until the interpreter reaches it in the script.</p>
+
+                <h2>Functions are fundamental to programming!</h2>
+                <p>Things learned in this lession:</p>
+                <ul>
+                    <li>Declare and run functions</li>
+                    <li>Use return statements to return items when a function runs</li>
+                    <li>Explain the difference between parameters and arguments</li>
+                    <li>Explain the difference between returning and logging</li>
+                    <li>Understand how scope works in JavaScript</li>
+                    <li>Use <strong>let</strong> and <strong>const</strong> in block scope</li>
+                    <li>Understand how hoisting works</li>
+                    <li>Store functions in variables using function expressions</li>
+                    <li>Use inline function expressions</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Intro to Arrays</h2>
+                <p><strong>Arrays</strong> are data structures that can hold multiple data values. Arrays are also organized data.</p>
+                <p>
+                    To declare an array, you delcare the variable name with an opening/closing brackets<br>
+                    <strong>let arr = [];</strong><br>
+                    To add data to the array, each element in the array must be seperated with a comma.
+                </p>
+                <p>
+                    <strong>Arrays</strong> may store multiple types of data in a single array. Arrays may also be nested inside each other<br>
+                    <strong>const nestArray = [[3, 6, 11], ["March", "June", "November"], [false, true, true]];</strong><br>
+                    Arrays may also be broken down on a new line after each comma. This may make it easier to read arrays or nested arrays:<br>
+                    <strong>
+                        const nestArray = [<br>
+                            [3, 6, 11],<br>
+                            ["March", "June", "November"],<br>
+                            [false, true, true]<br>
+                        ];
+                    </strong>
+                </p>
+                <p>An <strong>element</strong> is one individual piece of data in the array.</p>
+                <p>Each element in the array is numbered or <strong>indexed</strong> starting with <strong>0</strong>.</p>
+                <p>The index allows us to access the element's position in the array.</p>
+                <img src="../images/array_index_example.png" alt="Array Indexing Example">
+                <h3>Array Indexing</h3>
+                <p>If trying to access an index of an array that does not exist, an <strong>undefined</strong> value will be returned.</p>
+                <p>To change the value of an array element, you need to set it equal to a new value.</p>
+                <p>
+                    <em>Example:</em><br>
+                    <strong>
+                        const arrCount = [0,1,2,2,4,5];<br>
+                        console.log(arrCount[3]);<br>
+                        arrCount[3] = 3;<br>
+                        console.log(arrCount[3]);
+                    </strong>
+                </p>
+                <h3>Why declare arrays with <strong>const</strong> instead of <strong>let</strong></h3>
+                <p>
+                    simple way to think about the difference between let and const is that we use let when we anticipate that the value of a variable will change and const when we think it will be constant --
+                    but that shorthand doesn't tell the whole story. The difference between let and const is not so much about change but about reassignment
+                </p>
+                <ul>
+                    <li>let allows you to reassign the variable</li>
+                    <li>const doesn't allow you to reassign the variable</li>
+                </ul>
+                <p>The decision about whether we need to be able to reassign the variable is based on what type of variable it is and how JavaScript stores those values.</p>
+                <h3>Primitive vs Object Types in JavaScript</h3>
+                <p>
+                    String, Number, Boolean, undefined and null are considered Primitive Types in JavaScript. 
+                    These relatively simple data types represent just one value which makes it easy for JavaScript to store that value. 
+                    So when you assign a primitive value to a variable, JavaScript actually assigns that value.
+                </p>
+                <p>
+                    Arrays are more complicated because they consist of a list of values which makes storage much more complicated. 
+                    Arrays are actually Object types which means that instead of assigning all of the values of the list to the array, JavaScript simply assigns a reference to where to find the values in the array. 
+                    Even if the values inside the object change, the reference address doesn't.
+                </p>
+                <p>
+                    Here's an analogy that might help. Think of a JavaScript array as if it were a house. 
+                    The house has a group of people who live inside it. If those people move out, and a new group of people moves in, the names of the people inside the house changes, but the house's postal address won't.
+                </p>
+                <p><strong>TL;DR</strong><br>We use <strong>const</strong>> to declare arrays because JavaScript is assigning a reference that points to that array. 
+                    We can change whatever we want inside the array, but we cannot change which array the variable points to.
+                </p>
+
+                <h2>Array Properties and Methods</h2>
+                <p>Properties are special pieces of information about a data structure; for example, <strong>.length</strong> gets the number of characters in a string. In an array, <strong>.length</strong> gets the number of indexes.</p>
+                <p>Methods are predefined functions that a data structure can call; for example, <strong>reverse</strong>, <strong>sort</strong>, <strong>push</strong>, and <strong>pop</strong></p>
+                <ul>
+                    <li>
+                        <strong>REVERSE</strong> - Reverses the order of the elements in an array
+                    </li>
+                    <li>
+                        <strong>SORT</strong> - Sorts the elements in an array
+                    </li>
+                    <li>
+                        <strong>PUSH</strong> - adds elements to an array
+                    </li>
+                    <li>
+                        <strong>POP</strong> - Removes elements from an array
+                    </li>
+                </ul>
+                <p>There are a lot of properties and methods that may be used. For a full list, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank">click here: MDN Documentation</a></p>
+                <p><em><strong>TIP:</strong> Type <strong>[]</strong> in the JavaScript console for a list of all available array methods</em></p>
+                <h3>length property</h3>
+                <p>
+                    adding <strong>.length</strong> to an array will find it's length.<br>
+                    <strong>
+                        const fruits = ["apple", "orange", "banana"];<br>
+                        console.log(fruits.length);
+                    </strong><br>
+                    <em>Prints: <strong>3</strong></em><br>
+                    The length property returns the number of elements in an array.<br>
+                    <em><strong>Tip:</strong> Strings have a <strong>.length</strong> property too. It can be used to get the length of how many characters in the string.</em>
+                </p>
+                <h3>Push method</h3>
+                <p><strong>push()</strong> method adds elements to the end of an array.</p>
+                <p>
+                    Example of how to use <strong>.push()</strong>:<br>
+                    <strong>
+                        const fruits = ["apple", "orange", "banana"];<br>
+                        fruits.push("pineapple");
+                    </strong><br>
+                    <em><strong>Note:</strong> The <strong>push()</strong> method returns the length of the array after an element has been added.</em>
+                </p>
+                <img src="../images/push_example.png" alt="Push return exapmle">
+                <h3>Pop method</h3>
+                <p><strong>pop()</strong> method removed the elements from the end of an array.</p>
+                <p><strong>pop()</strong> will always remove the last elemnt form the end of the array.</p>
+                <p><em><strong>Note:</strong> <strong>pop()</strong> returns the elemnt that has been removed - This may be handy if you want to do something with the element that has been removed from the array.</em></p>
+                <img src="../images/pop_example.png" alt="Pop return example">
+                <h3>Splice method</h3>
+                <p><strong>splice()</strong> allows adding and removing elements from anywhere within an array.</p>
+                <p>
+                    Unlike <strong>push()</strong> and <strong>pop()</strong> being limited to modifying the end of an array,
+                    <strong>splice()</strong> allows us to specify the index of the array and add new elements as well as number of elements to delete (if any).
+                </p>
+                <p>
+                    Following is the syntax of <strong>splice()</strong> method:<br>
+                    <strong>arrayName.splice(arg1, arg2, item1, ..., itemX);</strong>
+                </p>
+                <ul>
+                    <li>
+                        <strong>arg1</strong> = Mandatory argument. Specifies the starting index position to add/remove items. 
+                        You can use a negative value to specify the position from the end of the array e.g., -1 specifies the last element.
+                    </li>
+                    <li>
+                        <strong>arg2</strong> = Optional argument. Specifies the count of elements to be removed.
+                        If set to 0, no items will be removed.
+                    </li>
+                    <li>
+                        <strong>item1, ..., itemX</strong> items to be added at index position arg1
+                    </li>
+                </ul>
+                <p>
+                    <strong>VS Code definition</strong><br>
+                    splice(start: number, deleteCount: number, ...items: T[]): T[];<br>
+                    Inserts new elements at the start of an array, and returns the new length of the array.
+                    @param items Elements to insert at the start of the array.
+                </p>
+                <p><strong>splice()</strong> method returns the item(s) that were removed.</p>
+                <p>
+                    <strong>splice()</strong> is an incredibly powerful method that allows you to manipulate your arrays in a variety of ways.
+                    Any combination of adding or removing elements from an array can all be done in one simple line of code.<br>
+                    Take a look at the <strong><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank">MDN documentation</a></strong> to see a long list of example code snippets demonstrating the power of <strong>splice()</strong>.
+                </p>
+                <img src="../images/arraySplice_example.png" alt="Array splice example">
+                <h3>Shift method</h3>
+                <p><strong>shift()</strong> works similar to <strong>pop()</strong>, exepct <strong>shift()</strong> removes the <em>first</em> element from the array.</p>
+                <h3>Join method</h3>
+                <p>You can combine elements in an array to form a string using <storng>join()</storng> method.</p>
+            </div>
+
+            <div>
+                <h2>Array Loops</h2>
+                <p>
+                    Arrays have a set of special methods to help you iterate over and perform operations on collections of data. 
+                    You can view the <strong><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">MDN Documentation list of Array methods</a></strong>, but a couple big ones to know are the <strong>forEach()</strong> and <strong>map()</strong> methods.
+                </p>
+                <h3>forEach</h3>
+                <p>
+                    We could use a for loop to loop over each element in an array:<br>
+                    <strong>for(var i = 0; i &lt <em>array</em>.length; i++)</strong>
+                </p>
+                <p>
+                    <strong>.forEach()</strong> method - This allows us to loop over each element in an array;
+                    or iterate over an array and manipulate each element with an inline function expression.
+                </p>
+                <p>The function passed to the <strong>forEach()</strong> method can take up to three parameters: <strong>element</strong>, <strong>index</strong>, and <strong>array</strong>
+                <em><strong>Note:</strong> these may be named whatever makes sense.</em></p>
+                <img src="../images/forEach_method_syntax.png" alt="forEach array method syntax">
+                <p>
+                    If the function will only be used once throughout the script, <em>(using the syntax example in the image above)</em> this can be written <em>inline</em>:<br>
+                    <strong>
+                        const myArray = ["A", "B", "C", "D"];<br><br>
+                        myArray.forEach(function(<em>element</em>, <em>index</em>, <em>array</em>) {<br>
+                        -   console.log("Element: " + element);<br>
+                        -   console.log("Index: " + index);<br>
+                        -   console.log("Array: " + array);
+                        });
+                    </strong>
+                </p>
+                <p>
+                    The <strong>forEach()</strong> method iterates over the array without the need of an explicitly defined index.
+                </p>
+                <p>
+                    The <strong>forEach()</strong> method will call this function once for each element in the array (hence the name forEach).
+                    Each time, it will call the function with different arguments. 
+                    The <strong>element</strong> parameter will get the <em>value</em> of the array element. 
+                    The <strong>index</strong> parameter will get the <em>index</em> of the element (starting with zero).
+                    The <strong>array</strong> parameter will get a reference to the whole array, which is handy if you want to modify the elements.
+                </p>
+                <h3>Map</h3>
+                <p>
+                    <strong>for loops</strong> are very versatile and give you complete control over the looping process because you can explicitly define where to start and stop in the array, 
+                    whether you want to skip over values in the array, and whether you'd like to break out of the loop early using a break statement:<br><br>
+                    <strong>
+                        const myArray = [1,2,3,4,5];<br><br>
+                        for (let i = 0; i < myArray.length; i+= 2){<br>
+                        -   console.log(myArray[i]);<br>
+                        -   if (i === 2){<br>
+                            --  break;<br>
+                        -   }<br>
+                        }
+                    </strong>
+                </p>
+                <p>
+                    <strong>forEach</strong> gives you a concise way of looping over an array if you know you're going to be loopingover every element from start to finish.
+                    You have less versatility than with a regular for loop, but you can access each element directly, without using an index.<br><br>
+                    <strong>
+                        const myArray = [1,2,3,4,5];<br><br>
+                        myArray.forEach(function(element)){<br>
+                        -   console.log(element);<br>
+                        }
+                    </strong><br>
+                    <strong>forEach()</strong> is NOT useful if wanting to permanently modify the original array. <strong>forEach()</strong> always returns <strong>undefined</strong>.
+                </p>
+                <p>
+                    <strong>map()</strong> method can take an array, perform an operation on each element and return the new array.
+                </p>
+                <img src="../images/map_method_example.png" alt="map method">
+                <p>
+                    <strong>map()</strong> accepts one argument, a function that will be used to manipulate each element in the array.
+                    With <strong>map()</strong>, there is no need to iterate over the indices anymore; <strong>map()</strong> does that work for you!
+                </p>
+            </div>
+
+            <div>
+                <h2>Arrays in Arrays (nested arrays)</h2>
+                <p>An array of arrays can be represented as grid-like structures; Each element of the array corresponds to a row of cells.</p>
+                <ul>
+                    <li>Each row of the grid is an array</li>
+                    <li>Each of those arrays <em>(or row)</em> is an element of the larger array</li>
+                </ul>
+                <p>
+                    To access each row of the grid, use a single <strong>for loop</strong><br>
+                    <strong>
+                        for (let row = 0; row &lt grid.length; row++) {<br>
+                        -   console.log(grid[row]);<br>
+                        }
+                    </strong>
+                </p>
+                <p>
+                    To access each element in the <em>rows</em>, use nested <strong>for loops</strong>; a <strong>for loop</strong> inside of another <strong>for loop</strong><br>
+                    <strong>
+                        for (let row = 0; row &lt grid.length; row++) {<br>
+                        -   for (let cell = 0; cell &lt grid.length; cell++){<br>
+                        -   -   console.log(grid[row][cell]);<br>
+                        -   }<br>
+                        }
+                    </strong><br>
+                    The outer loop will cycle through each <em>row</em> that currently being iterated over;
+                    The inner loop will iterate over each cell.
+                </p>
+                <p><em><strong>Best Practice:</strong> use intuitive variable names for variables like <strong>row</strong> and <strong>column</strong> or <strong>r</strong> and <strong>c</strong>.
+                This will help visualize the nested array.</em></p>
+                <p>
+                    When writing arrays inside arrays, it is best to write them out accross multiple lines:<br>
+                    <strong>
+                        const nestedArray = [<br>
+                        ["A1", "A2", "A3"],<br>
+                        ["B1", "B2", "B3"],<br>
+                        ["C1", "C2", "C3"]
+                        ];
+                    </strong>
+                </p>
+            </div>
+
+            <div>
+                <h2>Objects</h2>
+                <p>Objects allow us to wrap up pieces of related data and functionality into one single container.</p>
+                <h3>Ojbects in code</h3>
+                <p><strong>typeof</strong> is an operator that returns the name of the data type that follows it.</p>
+                <p><em>Objects</em> are data structures in JavaScript that lets you store data about a particular thing, and helps keep track of that data by using a "key".</p>
+                <p>An object allows you to group information into a meaningful structure.</p>
+                <p>
+                    <em>Example:</em><br>
+                    <strong>
+                        const person = {<br>
+                            name: "John",<br>
+                            age: 25,<br>
+                            parents: ["James", "Alice"],<br>
+                            pets: ["cat", "dog"],<br>
+                            parent: false;<br>
+                        };<br>
+                    </strong>
+                </p>
+                <p>
+                    The syntax used is <strong>object-literal notation</strong>. Things to remember when structuring an object-literal:
+                </p>
+                <ul>
+                    <li>
+                        The "key" (representing a <strong>property</strong> or <strong>method</strong> name) and its "value" are seperated from each other by a colon
+                    </li>
+                    <li>
+                        The <strong><em>key</em>: <em>value</em></strong> <em>pairs</em> are seperated from each other by commas
+                    </li>
+                    <li>
+                        The entire object is wrapped inside curly braces <strong>{ }</strong>
+                    </li>
+                </ul>
+                <p>To access the object's <strong><em>key</em>: <em>value</em></strong>, you can use one of two ways:</p>
+                <ul>
+                    <li><strong>person.pets</strong> - <em>dot notation</em></li>
+                    <li><strong>person["pets"]</strong> - <em>bracket notation</em></li>
+                </ul>
+                <p>Objects can also contain methods. The syntax is the same as the other <strong>key: <em>value</em></strong> pairs, but the method for the object will be a function.</p>
+                <p>
+                    <em>Example:</em><br>
+                    <strong>
+                        const person = {<br>
+                            name: "John",<br>
+                            age: 25,<br>
+                            parents: ["James", "Alice"],<br>
+                            pets: ["cat", "dog"],<br>
+                            parent: false;<br>
+                            job: function() { return "Web developer";};
+                        };<br><br>
+                        person.job();
+                    </strong>
+                </p>
+                <h4>Naming Conventions</h4>
+                <p>Best practing for naming objects:</p>
+                <ul>
+                    <li>Don't list items with a <em>#number</em> as the first character of the key name</li>
+                    <li>Don't use <em>spaces</em> or <em>hyphens in key names</em> - "camelCase" should be used when using names with multiple words</li>
+                    <li>Don't use quotes around key names unless necessary. It may not cause a problem, but it can mask issues with key names</li>
+                </ul>
+
+
+
+            </div>
+
+        
+        </div>
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="intro_to_javascript.html">Intro to JavaScript</a></li>
+                    <li><a href="beyond_basics_js.html">Beyond the Basics JavaScript</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </body>
+</html>                
