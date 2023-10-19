@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<htm lang="en">
+    <head>
+        <meta charset = "utf-8">
+        <title>Test Workspace</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+                
+    <body>
+
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="intro_to_javascript.html">Intro to JavaScript</a></li>
+                    <li><a href="beyond_basics_js.html">Beyond the Basics JavaScript</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div>
+            <h1><strong>JavaScript Syntax</strong></h1>
+            <div>
+                <h2>Let and Const</h2>
+                <p><strong>let</strong> can be reassigned but cannot be redeclared in same scope. Should be used when you plan to reassignnew value(s) to a variable.</p>
+                <p>
+                    <strong>const</strong> cannot be reassigned. It must be declared with an initial value. Should be used as default - when you will not reassign value(s) to a variable or don't know if you will yet.
+                    If you need to reassgin the variable, refactor code by changing the variable from <strong>const</strong> to <strong>let</strong>
+                </p>
+                <p><strong>var</strong> should not typically be used. It may be used to globally define variables but is often considered bad practice.</p>
+            </div>
+
+            <div>
+                <h2>Template Literals</h2>
+                <p>Prior to ES6, to concatenate strings was by alternating strings with concatenation operator (<strong>+</strong>)</p>
+                <p>
+                    <em>
+                        <strong>Note:</strong> As an alternative to using the string concatenation operator (<strong>+</strong>), 
+                        you can use the String's <strong>concat()</strong>> method, but both options are rather clunky for simulating true <a href="https://en.wikipedia.org/wiki/String_interpolation" target="_blank">string interpolation</a>.
+                    </em>
+            </p>
+            <p>
+                <strong>Template literals</strong> are essentially string literals that include embedded expressions.<br>
+                Denoted with backticks instead of single or double quotes.<br>
+                Template literals can contain placeholders which are represented using <strong>`${<em>expression</em>}`</strong>.
+            </p>
+            <p>
+                <em>Exmaple:</em><br>
+                instead of <br>
+                <strong>
+                    let message = `${person.name} is ${person.age} years old!`;
+                </strong>
+            </p>
+            <p>
+                With <strong>template literals</strong>, there is no need for <strong>"quotes"</strong> and <strong>+</strong> to concatenate.
+                There is no need for special characters for string behavior like <strong>\n</strong> for new lines. You simply type the string how it needs to be written.
+            </p>
+            <p>
+                <em><strong>Tip:</strong> Embedded expressions inside template literals can do more than just reference variables.
+                You can perform operations, call functions and use loops inside embedded expressions!</em>
+            </p>
+            </div>
+
+            <div>
+                <h2>Destructuring</h2>
+                <p>
+                    <em>Example: (not destructured)</em><br>
+                    <strong>
+                        const scores = [8, 28, 10];<br>
+                        const score1 = scores[0];<br>
+                        const score2 = scores[1];<br>
+                        const score3= scores[2];<br>
+                        console.log(score1, score2, score3);
+                    </strong><br>
+                    <br>
+                    <em>Example: (destructured)</em><br>
+                    <strong>
+                        const scores = [8, 28, 10];<br>
+                        const [score1, score2, score3] = scores;<br>
+                        console.log(score1, score2, score3);
+                    </strong>
+                </p>
+                <p>
+                    <strong>Destructuring</strong> allows you to specify elements to extract from an array or object <em>on the left side of an assignment</em>.
+                    When destructuring, indexes are implied. To ignore values when destructuring, leave the destructured index empty: <strong>const [score1, , score 3] = scores;</strong>
+                </p>
+                <h3>Destructuring values from an object</h3>
+                <p>
+                    <em>Example:</em><br>
+                    <strong>
+                        const person = {<br>
+                            name: "John",<br>
+                            age: 27,<br>
+                            employed: true<br>
+                        };<br>
+                        const {name, age, employed} = person;<br>
+                    </strong>
+                </p>
+                <p><strong>{curly braces}</strong> represents an object being destructured. <strong>name</strong>, <strong>age</strong>, and <strong>employed</strong> represent the variables to store the properties from the object.</p>
+                <p><em><strong>Tip:</strong> To specify the value to pull from an object, <strong>let {employed} = person</strong> only pulls the <strong>employed</strong> property from the <strong>person</strong> object.</em></p>
+            </div>
+
+            <div>
+                <h2>Iteration</h2>
+                <p>Iteration is the process of getting to the next item in a loop.</p>
+                <p>
+                    Iterable interface allows us to customize how objects are iterated.<br>
+                    A loop, <strong>for...of loop</strong>, loops exclusively over iterable objects - 
+                    an object that has implemented the iterable interface.
+                </p>
+                <p>
+                    <em>Example:</em><br>
+                    <strong>
+                        const names = ["James", "Kavita", "Richard"];<br>
+                        for (const oneName of names){<br>
+                            console.log(oneName);<br>
+                        }
+                    </strong>
+                </p>
+            </div>
+
+            <div>
+                <h2>For...of Loops</h2>
+                <p>
+                    For...of loops can iterate over any type of data that is iterable; following the 
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols" target="_blank">iterable protocol</a>.
+                    By default, this includes the following data types: <strong>string</strong>, <strong>array</strong>, <strong>map</strong>, and <strong>set</strong><br>
+                    <em>Note: <strong>Object</strong> data types are not iterable by default.</em>
+                </p>
+                <p>Unlike the traditonal <strong>for loop</strong>, <strong>for...in loops</strong> eliminate the counting logic and exit condition; Indexing still needs to be used to access the values of the array and can sometimes make it more conusinf.</p>
+                <p><strong>for...of</strong> looks identical to <strong>for...in</strong>. <strong>for...of</strong> is the most concise version of all for loops.</p>
+                <p><em>
+                    <strong>Tip:</strong> It's good practice to use plural names for objects that are collections of values. That way, when you loop over the collection, you can use the singular version of the name when referencing individual values in the collection. 
+                    For example:<br>
+                    <strong>for (const number of numbers){...}</strong>
+                </em></p>
+                <h4>Traditional for loop</h4>
+                <img src="../images/traditional_for_loop.png" alt="traditional for loop">
+                <h4>for...in loop</h4>
+                <img src="../images/for_in_loop.png" alt="for...in loop">
+                <h4>for...of loop</h4>
+                <img src="../images/for_of_loop.png" alt="for...of loop">
+                <p>
+                    Unlike the <strong>for...in loop</strong>, with <strong>for...of loops</strong>, you can stop or break the loop anytime.
+                    Also there is no need to worry about new properties to objects. The <strong>for...of loop</strong> will only iterate over the values in the object.
+                </p>
+                <p>A downside of the <strong>for...of loop</strong> is there is no access to a specific index which may be needed.</p>
+            </div>
+
+            <div>
+                <h2>Spread... Operator</h2>
+                <p>The <strong>spread...</strong> operator allows you to expand, <em>or spread</em> iterable objects into multiple elements</p>
+                <h4>Combing arrays with <strong>Concat()</strong></h4>
+                <p>
+                    You can combine multiple arrays using <strong>concat()</strong>:<br>
+                    <strong>
+                        const fruits = ["apples", "bananas", "oranges"];<br>
+                        const vegetables = ["lettuce", "carrots", "corn"];<br>
+                        const produce = fruits.concat(vegetables);                        
+                    </strong><br>
+                    Although it works, there is a shorthand way to write this code:<br>
+                    <strong>
+                        const fruits = ["apples", "bananas", "oranges"];<br>
+                        const vegetables = ["lettuce", "carrots", "corn"];<br>
+                        const produce = [...fruits, ...vegetables];                        
+                    </strong><br>
+                </p>
+            </div>
+
+            <div>
+                <h2>Rest Parameter</h2>
+                <p>The <strong>rest parameter</strong> allows you to represent an indefinite number of elements as an array.</p>
+                <img src="../images/rest_parameter_example.png" alt="Rest parameter example">
+                <p>
+                    This takes the values of the <strong>order</strong> array and assigns them to individual variables using <strong>destructuring</strong>. 
+                    Each element is assigned an individual variable name except items. 
+                    Using the <strong>rest parameter</strong>, <strong>items</strong> is assigned <em>the rest</em> of the values in the array <em>(as an array)</em>.
+                </p>
+                <h3>Variadic functions</h3>
+                <p>Another use case for <strong>rest parameter</strong> is when working with <strong>Variadic functions</strong>.</p>
+                <p>
+                    <strong>Varidic functions</strong> are functions that take an indefinite number of arguments. 
+                    For example, a function called <strong>sum()</strong> calculates the sum of an indefinite amount of numbers like a calculator.
+                    There's an endless number of ways <strong>sum()</strong> may be called. Regardless of the amount of numbers passed to the function, it should always return the sum total.
+                </p>
+                <p>To accomplish this:</p>
+                <ul style="list-style: none;">
+                    <li class="rgb_test">
+                        function sum(...nums) {<br>
+                            let total = 0;<br>
+                            for (const eachNum of nums){<br>
+                                total += eachNum;<br>
+                            }<br>
+                            return total;<br>
+                        }<br>
+                        <br>
+                        sum(5, 1, 38, 0);<br>
+                        sum(3, 5);<br>
+                        sum(8, 293, 10, 20, 4, 6, 28, 63);<br>
+                    </li>
+                </ul>
+                <p><strong>function sum(...nums) {...}</strong> makes the code more conciese and easier to read. Remember, the <strong>for...of loop</strong> is used to loop over any iterable data.</p>
+            </div>
+
+
+
+
+
+        </div>
+
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="intro_to_javascript.html">Intro to JavaScript</a></li>
+                    <li><a href="beyond_basics_js.html">Beyond the Basics JavaScript</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </body>
+</html>                
