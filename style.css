@@ -295,10 +295,16 @@ strong {
     background-color: rgb(243, 243, 243);
 }
 
+iframe {
+    width: 640px;
+    height: 360px;
+}
+
 @media(min-width:600px) and (max-width:900px){
     .media_query_example {
         background-color: rgb(128, 128, 128);
         font-size: large;
+        
     }
 }
 
@@ -307,5 +313,12 @@ strong {
         background-color: rgb(58, 58, 58);
         color:rgb(243,243,243);
         font-size: larger;
+    }
+}
+
+@media(max-width:900px) {
+    iframe {
+        width: 320px;
+        height: 180px;
     }
 }

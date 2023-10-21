@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<htm lang="en">
+    <head>
+        <meta charset = "utf-8">
+        <title>Test Workspace</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+                
+    <body>
+
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS Notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="intro_to_javascript.html">Intro To JavaScript</a></li>
+                    <li><a href="beyond_basics_js.html">Beyond the Basics JavaScript</a></li>
+                    <li><a href="js_loops.html">JavaScript Loops</a></li>
+                    <li><a href="js_syntax.html">JavaScript Syntax</a></li>
+                    <li><a href="dom.html">Document Object Model</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="test_page.html">Testing Workplace</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div>
+            <h1>The Document Object Model</h1>
+            <div>
+                <h2>It's All About the DOM</h2>
+                <p>
+                    The <strong>DOM</strong> stands for <strong>Document Object Model</strong>. 
+                    It is a tree structure that captures the content and properties of the HTML and the relationships between each Node.
+                    The DOM is the full parse representation of the HTML.
+                </p>
+                <p>
+                    When requesting a website, regardless of the backend, it will respond with HTML. 
+                    This response based on HTML spec which contains specific set of rules for how broswers should process recieved data.
+                </p>
+                <p>DOM/HTML Process order:</p>
+                <ol>
+                    <li>HTML is received</li>
+                    <li>HTML tags are converted to tokens</li>
+                    <li>Tokens are converted to Nodes</li>
+                    <li>Nodes are converted to the DOM</li>
+                </ol>
+                <p>
+                    The browser receives a steram of HTML. 
+                    The bytes are ran through a complex (but fully documented) parsing process that determines the different characters (The start tag character <strong>&lt</strong>, an attribute like <strong>href</strong> and a closing angle bracked like <strong>&gt</strong>).
+                    After parsing takes place, a process called tokenization begins.
+                    Tokenization takes one character at a time and builds up tokens:
+                </p>
+                <ul>
+                    <li>DOCTYPE</li>
+                    <li>start tag</li>
+                    <li>end tag</li>
+                    <li>comment</li>
+                    <li>character</li>
+                    <li>end-of-file</li>
+                </ul>
+                <p>
+                    The DOM is a <em>model (representation)</em> of the relationships and attributes of the HTML doc that was received.<br>
+                    Remember that a JavaScript object is a tree-like structure that has properties and values. 
+                    The DOM can be accessed using a special object provided the the browser: <strong>documnt</strong>
+                </p>
+            </div>
+
+            <div>
+                <h2>Exploring the DOM</h2>
+                <ol>
+                    <li>Open the console</li>
+                    <li>Type <strong>document</strong></li>
+                    <li>Press <em>enter</em></li>
+                </ol>
+                <p>
+                    The <strong>document</strong> object is provided by the browser and is a representation of the HTML doc.
+                    The object is NOT provided by the JavaScript. It only references the DOM in one place, in its "<strong>Global Object</strong>" section:<br>
+                    <strong>
+                        In addition to the properties defined in this specification, the global object may have additional host defined properties. 
+                        This may include a property whose value is the global object itself; for example, in the HTML DOM, the window property of the global object is the global object itself. 
+                        <em><a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-262/#sec-global-object" target="_blank">(source)</a></em><br>
+                    </strong><br>
+                    Basically, this says the <strong>document</strong> object is not part of JS, but is expected to <em>already exist</em> and be freely accessible to JS code.
+                </p>
+                <p>
+                    The DOM is standardized by W3C. There are a number of specs that makeup the DOM; here are a few:
+                </p>
+                <ul>
+                    <li>Core Specification</li>
+                    <li>Events Specification</li>
+                    <li>Style Specification</li>
+                    <li>Validation Specification</li>
+                    <li>Load and Save Specification</li>
+                </ul>
+                <p><em>See the full list of DOM specs here: <a href="https://www.w3.org/TR/?tags[0]=dom#w3c_all" target="_blank">https://www.w3.org/TR/?tags[0]=dom#w3c_all</a></em></p>
+            </div>
+
+            <div>
+                <h2>Select Page Element by ID</h2>
+                <p>
+                    Given the <strong>document</strong> object is an object, just like a JavaScript object, this means it has key/value pairs.
+                    Some values are just pieces of data, while others are functions <em>(also known as <strong>methods</strong></em> That provide some type of functionality.
+                </p>
+                <h3><strong>.getElementById()</strong> method</h3>
+                <p>
+                    <strong>document.getElementById();</strong>
+                    To utalize the code, we need to pass a string of the ID of the desired element and return:<br>
+                    <strong>document.getElementById('footer');</strong><br>
+                    Note that the footer inside the method does not contain a <strong>#</strong>. 
+                    By the method name, <strong>getElementById</strong>, it knows it's searching for an ID.
+                </p>
+                <p>
+                    We can store an element inside a variable. In the console, we could example this:
+                </p>
+                <ol>
+                    <li>Open the console</li>
+                    <li>Type <strong>const main-header = document.getElementById('main-header');</strong></li>
+                    <li>Press <em>enter</em></li>
+                </ol>
+                <p>By storing the element in a variable, we can then access/reference that element in our JavaScript code.</p>
+                <img src="images/getElementById_stored_in_variable.png" alt="getElementById example">                  
+            </div>
+
+            <div>
+                <h2>Select Page Elements by Class Or Tag</h2>
+                <p><strong>document.getElementById()</strong> will only ever return at most one element.</p>
+                <p>Similar to CSS, JavaScript pulls elements by their selector.</p>
+                <ul>
+                    <li>
+                        <strong>.getElementById('idName')</strong> - CSS <strong>#idName</strong> {...}
+                    </li>
+                    <li>
+                        <strong>.getElementsByClassName('class')</strong> - CSS: <strong>.class</strong> {...}
+                    </li>
+                    <li>
+                        <strong>getElementByTagName('h1')</strong> - CSS: <strong>h1</strong> {...}
+                    </li>
+                </ul>
+                <p><em>
+                    <strong>Note:<br>
+                    </strong> <strong>.getElementById()</strong> does NOT have an "s" in <strong>Element</strong>.<br>
+                    <strong>.getElementsByClass()</strong> and <strong>.getElementsByTagName()</strong> bot DO have an "s" in <strong>Elements</strong><br>
+                    The slected page element(s) will NOT work if there is a typo missing or adding the "s" where it does or does not belong.
+                </em></p>
+            </div>
+
+            <div>
+                <h2>Nodes, Elements, and Interfaces</h2>
+                <p>The difference between "Node" and "node":</p>
+                <ul>
+                    <li>"<strong>Node</strong>" is like a <strong><em>class</em></strong></li> - This is like the <em>blueprint</em> for a building | Another word for blueprint is <strong>interface</strong>: Gives the properties and methods that are applied to the individual items
+                    <li>"<strong>node</strong>" is like an <strong><em>object</em></strong></li> - This is like the <em>actual building</em> that has been built from the blueprint
+                </ul>
+            </div>
+
+            <div>
+                <h2>The Node Interface</h2>
+                <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node" target="_blank">Node Interface on MDN</a></p>
+                <p>
+                    So the Node Interface is a blueprint for all of the properties (data) and methods (functionality) that every real node has after it's been created. 
+                    Now, the Node Interface has a lot of properties and methods, but it's not very specific...I mean, what is a node???<br>
+                    <br>
+                    Just like "blueprint for a Building" is not as specific as "blueprint for a house" or "blueprint for a skyscraper". 
+                    These are more-specific blueprints. 
+                    And these more-specific blueprints would probably have their own properties and methods that are specific to just houses or just skyscrapers.
+                </p>
+                <iframe src="https://youtube.com/embed/M2HMdiNdtYg">https://youtu.be/M2HMdiNdtYg</iframe>
+            </div>
+
+            <div>
+                <h2>Element Interface</h2>
+                <p>Just like the Node Interface, the Element Interface is a blueprint for creating elements</p>
+                <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element" target="_blank">Element Interface on MDN</a></p>
+                <p>
+                    Since Element is pointing at Node, this indicates that the Element Interface inherits all of the Node Interface's properties and methods.
+                    This means that any element (lowercase "e") that was created from the Element Interface is <em>also</em> a decendent from the Node Interface...
+                    Which means the element is also a node (lowercase "e" and "n").
+                </p>
+                <p>
+                    Just like the Node Interface, every Element has access to every property and method on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element" target="_blank">MDN Element page</a>
+                </p>
+                <iframe src="https://youtube.com/embed/5womdssnSWA">https://youtu.be/5womdssnSWA</iframe>
+                <p></p>
+            </div>
+
+            <div>
+                <h2>Many Interfaces to Use with JavaScript</h2>
+                <iframe src="https://youtube.com/embed/kt3Suy4pfB4">https://youtu.be/kt3Suy4pfB4</iframe>
+                <h3>Web Interfaces Include More Than Just Document, Element, and Interface</h3>
+                <p>
+                    View all Interfaces on the <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank">Web API Interfaces page</a>
+                </p>
+                <p>Notice:</p>
+                <ul>
+                    <li><strong>HTMLElement</strong> inherits from the <strong>Element Interface</strong></li>
+                    <li><strong>Element</strong> inherits from the <strong>Node Interface</strong></li>
+                </ul>
+                <p>
+                    This means that any HTML element inherits all of the properties and methods from <strong>Element</strong> and <strong>Node</strong><br>
+                    In addition, <strong>HTML Element</strong> has its own properties and methods.
+                </p>
+                <p>
+                    There are many different interfaces with a lot of different properties and methods on the 
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank">Web API Interfaces</a>
+                </p>
+            </div>
+
+            <div class="review">
+                <h2>Understanding Nodes, Elements, and Interfaces</h2>
+                <ul>
+                    <li>An <strong>Interface</strong> is like a blueprint</li>
+                    <li><strong>Properties</strong> are like bits of information or data</li>
+                    <li><strong>Methods</strong> are functionality</li>
+                </ul>
+                <p>A couple of specific interfaces:</p>
+                <ul>
+                    <li>Node Interface</li>
+                    <li>Element Interface</li>
+                </ul>
+                <p>Both of these interfaces have <em>properties</em> and <em>methods</em>.</p>
+                <p>The <strong>Element Interface</strong> inherits all of the properties and methods from the <strong>Node Interface</strong>.</p>
+                <p>
+                    There are a lot of other interfaces that can be accessed in JavaScript.
+                    Many of these interfaces inherit from other interfaces, which means that they share the properties and methods of their ancestor interfaces.
+                </p>
+            </div>
+
+            <div>
+                <h2>More Ways To Access Elements</h2>
+                <p>
+                    Before, browsers didn't have a specific standard they all met. You had to write code different for each browser.
+                    Then you had to write code to determine which browser was being used. 
+                    Because of this, many libraries with specific functionalies came along. jQuery Quickly became popular.
+                    One of the jQuery library's main purposes was to abstract the way the differences between browsers.
+                    Now, every browser has started supporting an official standard and jQuer's methods have been replaced by native DOM methods and new DOM methods were created.
+                </p>
+            </div>
+
+            <div>
+                <h2>The querySelector Method</h2>
+                <p><strong>.querySelector()</strong> method is used to select elements just like CSS. We pass a string that's just like a CSS selector into the <strong>.querySelector</strong></p>
+                <img src="images/querySelector.png" alt="querySelector">
+                <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector" target="_blank">MDN - Document: querySelector() Method</a></p>
+                <p><em>
+                    The <strong>.querySelector()</strong> method only returns ONE element. This makes sense if you use it in the console to search for an element by ID; 
+                    However, even though <strong>.getElementsByClassName()</strong> and <strong>.getElementsByTagName()</strong> both return a list of multiple elements, 
+                    using <strong>.querySelector()</strong> with a class selector or a tag selector will still only return the FIRST item it finds.
+                </em></p>
+                <h3>querySelectorAll Method</h3>
+                <p>
+                    <strong>.querySelectorAll()</strong> is the method that will get a list of all elements with a certain class or <em>all</em> of one type of element.<br>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll" target="_blank">MDN Document: querySelectorAll() method</a>
+                </p>
+                <iframe src="https://youtube.com/embed/XrS6vzAfBSk"></iframe>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList" target="_blank"><img src="images/querySelectorAll.png" alt=".querySelectorAll()">
+                <p>MDN NodeList</p></a>
+            </div>
+
+        </div>
+
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS Notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="intro_to_javascript.html">Intro To JavaScript</a></li>
+                    <li><a href="beyond_basics_js.html">Beyond the Basics JavaScript</a></li>
+                    <li><a href="js_loops.html">JavaScript Loops</a></li>
+                    <li><a href="js_syntax.html">JavaScript Syntax</a></li>
+                    <li><a href="dom.html">Document Object Model</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="test_page.html">Testing Workplace</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </body>
+</html>                
