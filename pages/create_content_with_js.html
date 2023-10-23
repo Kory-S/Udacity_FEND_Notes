@@ -2,7 +2,7 @@
 <htm lang="en">
     <head>
         <meta charset = "utf-8">
-        <title>Projects</title>
+        <title>Create with JS</title>
         <link rel="stylesheet" href="../style.css">
     </head>
                 
@@ -20,6 +20,7 @@
                     <li><a href="js_syntax.html">JavaScript Syntax</a></li>
                     <li><a href="dom.html">Document Object Model</a></li>
                     <li><a href="create_content_with_js.html">Create Content With JavaScript</a></li>
+                    <li><a href="performance.html">Performance</a></li>
                     <br>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="test_page.html">Testing Workplace</a></li>
@@ -193,14 +194,116 @@
 
             <div>
                 <h2>Eent Firing Order</h2>
+                <iframe src="https://youtube.com/embed/rGhgPPYc2sg"></iframe>
+                <ol>
+                    <li>
+                        Clicking on the event starts the <strong><em>capturing</em></strong> phase at the <strong>html</strong> tag, 
+                        working its way down to the element that was clicked.
+                    </li>
+                    <li>When it reached the element that was clicked, it's in the <strong><em>target</em></strong> phase</li>.
+                    <li>Then it switches to the <strong><em>bubbling</em></strong> phase and works its way back to the <strong>html</strong>tag.</li>
+                </ol>
+                <img src="../images/event-phases.jpg" alt="Event Phases">
+                <h3>Which Phase is Used?</h3>
+                <p>There's a <em>third</em> argument used with <strong>.addEventListener()</strong>:</p>
+                <ol>
+                    <li><em>type</em></li>
+                    <li><em>listener</em></li>
+                    <li><em>useCapture</em> or <em>capturing</em></li>
+                </ol>
+                <p>
+                    <strong>By default, when <strong>.addEventListener()</strong> is called with only two arguments, the method defaults to using the bubbling phase.</strong>
+                </p>
+                <img src="../images/addEvenetListener_three_arguments.png" alt="addEventListener() with three methods">
+                <p>The <strong>true</strong> parameter at the end of the <strong>.addEventListener()</strong> method makes the event respond in the <strong>capturing</strong> phase.</p>
+                <iframe src="https://youtube.com/embed/4WYyk3AhCOU"></iframe>
+            </div>
 
+            <div>
+                <h2>The Event Object</h2>
+                <p>
+                    When an event occurs, the browser includes an <strong>event object</strong>.
+                    This is a JavaScripts object that includes information about the event itself. 
+                    According to MDN, the <strong>.addEventListener()</strong>'s <em>listener</em> receives:<br>
+                    <strong>
+                        a notification (an object that implements the Event Interface) when an event of the specified type occurs
+                    </strong>
+                </p>
+                <p>Adding a parameter to the <strong>.addEventListener()</strong> so we can store this event object</p>
+                <img src="../images/add_param_to_eventListener.png" alt="Add parameter to .addEventListener()">
+                <p><em>
+                    <strong>Note:</strong> There is nothing special about the parameter name <strong>(event)</strong>. 
+                    The parameter is just a variable and, therefore, may be whatever makes sense.
+                </em></p>
+                <iframe src="https://youtube.com/embed/134IQEN89VQ"></iframe>
+                <p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">MDN | MouseEvent</a>
+                </p>
+                <img src="../images/mouseEvent_or_pointerEvent.png" alt="mouseEvent or pointerEvent">
+            </div>
 
+            <div>
+                <h2>Event Delegation</h2>
+                <p>
+                    The event object has a <strong>.target</strong> property. 
+                    This property references the <em>target</em> of the event. 
+                    This is where <strong>capturing</strong>, <strong> target</strong>, and <strong>bubbling</strong> phases become more important and useful
+                </p>
+                <p>The process when clicking on a paragraph element:</p>
+                <ol>
+                    <li>A paragraph element is clicked</li>
+                    <li>The event goes through the paturing phase</li>
+                    <li>It reaches the target</li>
+                    <li>It switches to the bubbling phase and starts going up the DOM tree</li>
+                    <li>When it hits the <strong>&ltdiv&gt</strong> element, it runs the listener function</li>
+                    <li>Inside the listener function, <strong>event.target</strong> is the element that was clicked</li>
+                </ol>
+                <p>
+                    <strong>event.target</strong> gives us direct access to the paragraph element that was clicked. 
+                    Because we have access to the element directly, we can access its <strong>.textContent</strong>, modify its styles, 
+                    update the classes it has, etc... <em>(anything we want/need to do really)</em>.
+                </p>
+                <img src="../images/event_target_example.png" alt="event.target example">
+            </div>
 
+            <div>
+                <h2>The DOM is Built Incrementally</h2>
+                <p>
+                    When the parser gets to a <strong>&ltscript&gt</strong> tag, it must wiat to download the script file and execute that JavaScript code.
+                </p>
+                <p>
+                    JavaScript file should be placed at the bottom of the HTML so the DOM may build all elements first.
+                    If JS runs before the DOM has a chance to build all the elements, <strong>querySelector</strong> will run into issues
+                    because the DOM does have a query to select yet.
+                </p>
+                <p>The alternative would be to use browser events; <strong>DOMContentLoaded</strong></p>
+            </div>
 
-
-
-
-                
+            <div>
+                <h2>The DOMContentLoaded Event</h2>
+                <p>
+                    The <strong>DOMContentLoaded</strong> event will fire when the DOM has fully loaded.
+                    It can be <em>listened</em> the same way other events are <em>listened</em> for:
+                </p>
+                <img src="../images/domContentLoaded_event.png" alt="DOMContentLoaded event">
+                <iframe src="https://youtube.com/embed/bmtMp4Rgryc"></iframe>
+                <p>
+                    Because of the <strong>DOMContentLoaded</strong> event, we can use it to keep our JS code in the <strong>&lthead&gt</strong> of the HTML page instead of the bottom.
+                </p>
+                <p>
+                    The <strong>DOMContentLoaded</strong> event will prevent the DOM code from running when the browser gets to it. 
+                    Then the event will fire; After the DOM has been constructed.<br>
+                    There is a <strong>load</strong> event, but this takes longer; It waits for all images, stylesheets, etc... to load.
+                </p>
+                <p>
+                    Even though <strong>DOMContentLoaded</strong> can <em>fix</em> the issue of having JS in the <strong>&lthead&gt</strong>, 
+                    it does mean more code which usually isn't the best way to do something.
+                    It is better to put the JS code at the bottom of the HTML file just BEFORE the closing <strong>&lt/body&gt</strong> tag.
+                </p>
+                <p>
+                    It can be good to use JS in the <strong>&lthead&gt</strong> of the HTML and use <strong>DOMContentLoaded</strong> when you have JavaScript code that needs to run <em>as soon as possible</em>.
+                    This way it'll run as early as possible, but not too early that the DOM isn't ready for it.
+                </p>
             </div>
 
         </div>
@@ -218,6 +321,7 @@
                     <li><a href="js_syntax.html">JavaScript Syntax</a></li>
                     <li><a href="dom.html">Document Object Model</a></li>
                     <li><a href="create_content_with_js.html">Create Content With JavaScript</a></li>
+                    <li><a href="performance.html">Performance</a></li>
                     <br>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="test_page.html">Testing Workplace</a></li>
