@@ -32,10 +32,280 @@
             <h1>Performance</h1>
             <div>
                 <h2>Add Page Content Efficiently</h2>
+                <p>Let's think of how we can make this <strong>for</strong> loop more effictient:</p>
+                <code><textarea>
 
+for (let i = 1; i &lt= 200; i++){
+    const newElement = document.createElement('p');
+    newElement.textContent = "This is paragraph number " + i;
+    document.body.appenedChild(newElement);
+}</textarea></code>
+                
+                <ul>
+                    <li>Creates a paragraph</li>
+                    <li>Adds text to the paragraph</li>
+                    <li>Adds the paragraph to page</li>
+                    <li>Repeats 200 times</li>
+                </ul>
+                <p>
+                    We do want two hundred paragraphs created; The <strong><code>for</code></strong> loop is what should be used. 
+                    Inside the <strong><code>for</code></strong> loop is where performance is lost. 
+                    To improve the performance:
+                </p>
+                <ul>
+                    <li>Create some parent <em>container</em> element outside of the <strong><code>for</code></strong> loop</li>
+                    <li>Append all new paragraph elements to parent <em>container</em>></li>
+                    <li>Append the parent container to the <strong><code>&ltbody&gt</code></strong> element instead of appending each time through the loop</li>
+                </ul>
+                <pre><strong><code>
+    const customDiv = document.createElement('div');            
+    //holds the new 'p' elements                                
+    for (let i = 1; i &lt= 200; i++) {                            
+        const newElement.creatElement('p');                     
+        newElement.innerText = "This is paragraph number " + i; 
+
+        customDiv.appendChild(newElement);                      
+    }                                                           
+    document.body.appendChild(customDiv);                       </code></strong></pre>
+
+                <p>
+                    To <em>prove</em> this is more performant, we can test the time it takes to actually run the code.
+                </p>
+                <h3>Testing Code Performance</h3>
+                <p>
+                    <strong><code>performance.now()</code></strong> returns a timestamp that is measured in milliseconds<br>
+                    <strong>Accurate to five thousandths of a millisecond (5 microseconds)</strong><br>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/now">MDN | Performance: now() method</a>
+                </p>
+                <p>To use <strong><code>performance.now()</code></strong>:</p>
+                <ol>
+                    <li>use <strong><code>proformance.now()</code></strong> to get the initial start time for the code</li>
+                    <li>run the code to test</li>
+                    <li>Execute <strong><code>performance.now()</code></strong> to get another time measurement</li>
+                    <li>subtract the initial time from the final time</li>
+                </ol>
+                <p>
+                    Adding a nested <strong><code>for</code></strong> loop will slow things down so we can see how this works
+                </p>
+                <code><pre><strong>
+    const startTime = performance.now();                    
+    for (let i = 1; i <= 100; i++){                         
+        for (let j = 1; j<=100; j++){                       
+            console.log("j = " + j + " | i = " + i);        
+        }                                                   
+    }                                                       
+    const endTime = performance.now();                      
+    console.log("Time to run: " + (endTime - startTime));   </strong></pre></code>
+                <p>
+                    We can use our previous code example to test this and <em>PROVE</em> it's faster:
+                </p>
+
+                <code><textarea>
+firstStart = performance.now();
+
+for (let i = 1; i <= 200; i++){
+    const newEl = document.createElement('p');
+    newEl.textContent = "This is paragraph number " + i;
+
+    document.body.appendChild(newEl);
+}
+
+firstEndSecondStart = performance.now();
+
+const customDiv = document.createElement('div');            
+//holds the new 'p' elements                                
+for (let i = 1; i <= 200; i++) {                            
+    const newElement = document.createElement('p');                     
+    newElement.innerText = "This is paragraph number " + i; 
+
+    customDiv.appendChild(newElement);                      
+}                                                           
+document.body.appendChild(customDiv);
+
+secondEnd = performance.now();
+
+const firstTest = firstEndSecondStart - firstStart;
+const secondTest = secondEnd - firstEndSecondStart;
+
+console.log("First block: " + firstTest + "\nSecond block: " + secondTest);
+
+function test(first, second){
+    if (first < second) {
+        console.log("The first test was " + (secondTest - firstTest) + " faster");
+    }
+    else {
+        console.log("The second test was " + (firstTest - secondTest) + " faster");
+    }
+};
+
+console.log(test(firstTest, secondTest));</textarea></code>
+                <p>
+                    There is <strong><code>dat.now()</code></strong> method, which essentially works the same as 
+                    <strong><code>performance.now()</code></strong> but it's less percise. 
+                    <strong><code>date.now()</code></strong> returns time in millisecond. 
+                    <strong><code>performance.now()</code></strong> returns time in microseconds.
+                </p>
             </div>
 
+            <div>
+                <h2>Using a Document Fragment</h2>
+                <p>
+                    A <strong>DocumentFragment</strong> represents a minimal DOM that has no parent. 
+                    It's used a a lightweight version of the Document 
+                    that stores a segment of a document structure comprised of nodes just like a standard document.<br>
+                    The key difference is that becuase the document fragment isn't part of the active document tree structure,
+                    changes made to the fragment doesn't affect the document, cause reflow, 
+                    or incur any performance impact that can occur when changes are made.
+                </p>
+                <p>
+                    The browser is constantly working to make the screen match the DOM. When adding a new element, the browser has to run through a 
+                    <strong>reflow</strong> calculation (to determine the new screen layout) and then <strong>repaint</strong> the screen. <em>This takes time.</em>
+                </p>
+                <p>
+                    If a new paragraph is added to the body element, the code would be slower because the growser would have to go through the 
+                    <strong>reflow</strong> and <strong>repaint</strong> process <em>for EACH element paragraph</em>. 
+                    The browser should only need to do this once, so we need to attach each new paragraph to something other than the active DOM.
+                    In previous examples, we've used:<br>
+                    <strong><code>
+                        const newDiv = document.createElement('div');
+                    </code></strong><br>
+                    This causes an unnecessary div element to the DOM.
+                </p>
+                <p>
+                    Instead of creating a new Element, we can use the <strong><code>.createDocumentFragment()</code></strong> method
+                    to create an empty DocumentFragment object. This is similar to <strong><code>.createElement()</code></strong>.
+                </p>
+                <p>Using the example from before:</p>
+                <pre><strong><code>
+    const customDiv = document.createElement('div');            
+    //holds the new 'p' elements                                
+    for (let i = 1; i &lt= 200; i++) {                            
+        const newElement.creatElement('p');                     
+        newElement.innerText = "This is paragraph number " + i; 
+                                                                
+        customDiv.appendChild(newElement);                      
+    }                                                           
+    document.body.appendChild(customDiv);                       </code></strong></pre>
+                <p>Rewritten with <strong><code>.createDocumentFragment()</code></strong> to avoid creating an unnecessary element:</p>
+<pre><strong><code>
+    const fragment = document.createDocumentFragment();         
+                                                                
+    for (let i = 1; i &lt= 200; i++) {                            
+        const newElement.creatElement('p');                     
+        newElement.innerText = "This is paragraph number " + i; 
 
+        fragment.appendChild(newElement);                       
+    }                                                           
+    document.body.appendChild(fragment);                        </code></strong></pre>
+            </div>
+
+            <div>
+                <h2>Reflow & Repaint</h2>
+                <p>
+                    <strong>Reflow</strong> - The process of the browser laying out the page.<br>
+                    It happens when the DOM is first displayed (generally after the DOM and CSS have loaded), 
+                    and again every time something could change the layout. This is a fairly slow process.
+                </p>
+                <p>
+                    <strong>Repaint</strong> - Happens after reflow as the browser draws the new layout to the screen. 
+                    Although fairly quick, this should still be limited to how often it happens.
+                </p>
+            </div>
+            
+            <div>
+                <h2>Implications of Single Threading</h2>
+                <p>
+                    JavaScript is <strong>single-threaded</strong> - the processing of one command at a time
+                </p>
+                <p>JavaScript doesn't execute multiple lines of code or functions at the same tiem. </p>
+                <h3>The Call Stack</h3>
+                <p>
+                    The JavaScript enginge keeps a <strong>call stack</strong>> <em>(basically a list)</em> of the functions that are running.
+                    When a function is inkoked, it is added to the list. 
+                    When all of the code inside a function has been run, the function is removed from the call stack. 
+                    With the call stack, a function doesn't have to complete before another function is added to the call stack.
+                </p>
+                <iframe src="https://youtube.com/embed/J9iKeNhoXNM"></iframe>
+                <h3>Understanding Code Synchronicity</h3>
+                <p>
+                    <strong>synchronous</strong> - existing or occuring at the same time
+                </p>
+                <p>
+                    Some code is <em>not</em> synchronous - meaning the code is written just like any other code, but it's executed at some later point in time. 
+                    An example of this is <strong>event listeners</strong>.
+                </p>
+            </div>
+
+            <div>
+                <h2>The Event Loop</h2>
+                <p>
+                    When using event listeners, JavaScript doesn't add these events to the Call Stack. 
+                    This is because of the JavaScript Event Loop
+                </p>
+                <p>
+                    The simplest explaination of JavaScript's <em>concurrency model</em> uses two rules:
+                    if some JavaScript is running, let it run until it's finished <em>("run-to-completion)</em>.
+                    If no JavaScript is running, run any pending event handlers.
+                </p>
+                <p>
+                    Since most JavaScript is run in response to an event, this is known as an <strong><em>event loop</em></strong>:
+                    Pick up the next event &gt run its handler &gt repeat.
+                </p>
+                <p>There are three parts to consider when thinking about the event loop:</p>
+                <ul>
+                    <li>The Call Stack</li>
+                    <li>Web APIs/the browser</li>
+                    <li>An Event Queue</li>
+                </ul>
+                <img src="../images/javascript-event-loop.jpg" alt="JavaScript event loop">
+                <p>
+                    Not all the code that is writen is 100% JavaScript. Some of the code is interacting with the Web APIs <em>(or "browser APIs")</em>. 
+                    There are many more examples, but both <strong><code>.addEventListener()</code></strong> and <strong><code>setTimeout()</code></strong> are Web APIs.
+                </p>
+                <iframe src="https://youtube.com/embed/uBdemYBG-ek"></iframe>
+                <p>
+                    <strong>Important:</strong> The key things to remember are:<br>
+                    1. Current synchronous code runs to completion<br>
+                    2. Events are processed when the browser isn't busy. Asynchronous code (such as loading an image)
+                    runs outside of this loop and sends an event when it's done.
+                </p>
+            </div>
+
+            <div>
+                <h2>setTimeout - Running Code Later</h2>
+                <p>
+                    Similar to <strong><code>.addEventListener()</code></strong> code being run at some later point, 
+                    there is the <strong><code>setTimeout()</code></strong> function that will run code at a point later in time. 
+                    The <strong><code>setTimeout()</code></strong> function takes:
+                </p>
+                <ul>
+                    <li>a function to run at some later time</li>
+                    <li>the number of milliseconds the code should wait before running the function</li>
+                </ul>
+                <p><em>Example:</em></p>
+                <pre><strong><code>
+setTimeout(function sayHi(){    
+    console.log('Hello');       
+}, 1000);                       </code></strong></pre>
+                <p>
+                    This would would take 1,000 milliseconds to run, or 1 second.
+                </p>
+                <p>
+                    Since <strong><code>setTimeout()</code></strong>> is an API provided by the browser, 
+                    the call to <strong><code>setTimeout()</code></strong> gives the <strong><code>sayHi()</code></strong> function over to the browser which it starts a timer.
+                    After the timer is finished, the <strong><code>sayHi()</code></strong> function moves to the Queue. 
+                    If the Call Stack is empty, then the <strong><code>sayHi()</code></strong> function is moved to the Call Stack and executed.
+                </p>
+
+
+
+
+
+
+
+
+
+            </div>
 
 
 

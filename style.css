@@ -301,6 +301,12 @@ iframe {
     height: 360px;
 }
 
+textarea {
+    width: 90%;
+    height: 150px;
+    margin: 5px;
+}
+
 @media(min-width:600px) and (max-width:900px){
     .media_query_example {
         background-color: rgb(128, 128, 128);
