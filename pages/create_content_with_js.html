@@ -2,7 +2,7 @@
 <htm lang="en">
     <head>
         <meta charset = "utf-8">
-        <title>Create with JS</title>
+        <title>Projects</title>
         <link rel="stylesheet" href="../style.css">
     </head>
                 
@@ -20,6 +20,7 @@
                     <li><a href="js_syntax.html">JavaScript Syntax</a></li>
                     <li><a href="dom.html">Document Object Model</a></li>
                     <li><a href="create_content_with_js.html">Create Content With JavaScript</a></li>
+                    <li><a href="browser_events.html">Browser Events</a></li>
                     <li><a href="performance.html">Performance</a></li>
                     <br>
                     <li><a href="projects.html">Projects</a></li>
@@ -27,283 +28,364 @@
                 </ul>
             </div>
         </nav>
-
+        
         <div>
             <h1>Creating Content with JavaScript</h1>
             <div>
-                <h2>What is an event</h2>
+                <h2>Update Existing Page Content</h2>
                 <p>
-                    An event is like an announcement. When an event happens, the browser will make an "accouncement" and we can use JavaScript to listen for and respond to the "announcement".
-                </p>
-                <h3>Seeing an Event</h3>
-                <p>
-                    Chrome browser has a special <strong>monitorEvents()</strong> function that will let us see different events as they occur.
-                </p>
-                <p> 
-                    <a href="https://developer.chrome.com/docs/devtools/console/utilities/#monitorEvents-function" target="_blank">
-                    <strong>Documentation for monitorEvents() function</strong> in Console Utilities API reference of Chrome DevTools documentation.</a>
-                </p>
-                <iframe src="https://youtube.com/embed/6PFZQxV-d_8"></iframe>
-                <p>
-                    The <strong>monitorEvents()</strong> function will keep spitting out all events happening on the targeted element until the page is refreshed (or closed).
-                    Alternatively, Chrome <em>does</em> offer a function, <strong>.unmonitorEvents()</strong> that will turn off announcing events for the targeted element.
-                </p>
-                <img src="../images/monitorEvents.png" alt="monitorEvents(document);">
-                <img src="../images/unmonitorEvents.png" alt="unmonitorEvents(document);">
-                <p><em>
-                    <strong>Note:</strong> <strong>monitorEvents()</strong> is used for development/testing purposes and is not intended for production.
-                </em></p>
-            </div>
-
-            <div>
-                <h2>Event Targets</h2>
-                <p>
-                    The <strong>Node Interface</strong> inherits from the <strong>EventTarget Interface</strong><br>
-                    <em>(See 'Document Object Model' notes for information on <strong>Node Interface</strong> and <strong>Element Interface</strong>)</em>
-                </p>
-                <img src="../images/EventTarget_Node_Element.jpg" alt="EvenetTarget &lt- Node &lt- Element">
-                <p class="rgb_test">
-                    <strong>EventTarget</strong> is an interface implemented by objects that can receive events and may have listeners for them<br>
-                    ------------------and------------------<br>
-                    Element, document, and window are the most common event targets, but other objects can be event targets too.<br><br>
-                    Source: <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_blank">MDN EventTarget Page</a>
-                </p>
-                <p>
-                    The EventTarget is at the top of the chain. This means that it does not inherit any properties or methods from other interfaces;
-                    however, every other interface inherits from it and therefore contain its properties and methods.<br>
-                    This means each of the following is an "event target":
+                    Three ways to get and set HTML content:
                 </p>
                 <ul>
-                    <li>The <strong>document</strong> page</li>
-                    <li>A paragraph element</li>
-                    <li>A video element</li>
-                    <li>etc...</li>
+                    <li><strong><code>innerHTML</code></strong></li>
+                    <li><strong><code>textContent</code></strong></li>
+                    <li><strong><code>innerText</code></strong></li>
+                </ul>
+                <h3>InnerHTML</h3>
+                <p>
+                    Every element inherits properties and methods from the Element Interface.
+                    This means that every element has an <strong><code>.innerHTML</code></strong> property.
+                    This property represents the markup of the element's content.<br>
+                    This property can be used to:
+                </p>
+                <ul>
+                    <li>get an element's (and all its descendants) HTML content</li>
+                    <li>set an element's HTML content</li>
+                </ul>
+                <iframe src="https://youtube.com/embed/go3zrL6BBos"></iframe>
+                <p>The <strong><code>.innerHTML</code></strong> property sets or returns the HTML content inside the selected element (between the tags).</p>
+                <p>
+                    There's also the rarely used <strong><code>.outerHTML</code></strong> property. This represents the HTML element itself, 
+                    <em>as well as its children</em>.
+                </p>
+                <img src="../images/innerHTML_outerHTML.png" alt=".innerHTML and .outerHTML property examples">
+                <h3>textContent</h3>
+                <p>
+                    <strong><code>.innerHTML</code></strong> will get/set an element's HTML content.<br>
+                    <strong><code>.textContent</code></strong> will get/set <em>just</em> the text content.
+                </p>
+                <p><strong><code>.textContent</code></strong> property will</p>
+                <ul>
+                    <li>set the text content of an element and all its descendants</li>
+                    <li>return the text conent of an element and all its descendants</li>
+                </ul>
+                <iframe src="https://youtube.com/embed/gcJEMEPVrRI"></iframe>
+                <p>
+                    <strong><code>.innerHTML</code></strong> contains all the HTML for the element.<br>
+                    <strong><code>.textContent</code></strong> contains only the text of the element.
+                </p>
+                <p>
+                    <em>Setting/changing an element's text content:</em><br>
+                    <strong><code>
+                        example.textContent = "I will be the updated text for the example element."
+                    </code></strong>
+                </p>
+                <p><em>Setting/changing an element's HTML content:</em>
+                    <strong><code>
+                        example.innerHTML = "I &ltstrong&gtWILL&lt/strong&gt update the &ltstrong&gtHTML&lt/strong&gt for the &ltem&gtexample&lt/em&gt element"
+                    </code></strong>
+                </p>
+                <h3>.innerText</h3>
+                <p>
+                    Like the <strong><code>.textContent</code></strong> property, the <strong><code>.innerText</code></strong> property can be used to get/set an element's text content, 
+                    but there are some important differences;
+                </p>
+                <ul>
+                    <li><strong><code>.textContent</code></strong> - sets/gets the text content of an element</li>
+                    <li><strong><code>.innerText</code></strong> - sets/gets the text as it would be seen based on CSS</li>
+                </ul>
+                <iframe src="https://youtube.com/embed/x_F1R-VGxeE"></iframe>
+            </div>
+
+            <div class="review">
+                <h2>Update Existing Content</h2>
+                <p>Multiple ways to change page contents:</p>
+                <ul>
+                    <li><strong><code>.innerHTML</code></strong></li>
+                    <li><strong><code>textContent</code></strong></li>
+                    <li><strong><code>.innerText</code></strong></li>
                 </ul>
                 <p>
-                    Both the <strong>document</strong> object and <strong><em>any</em> DOM element</strong> can be an event target because they inherit from the <strong>EventTarget Interface</strong>.<br><br>
-                    <strong>individual element</strong> &gt inherits from &gt <strong>Element Interface</strong> &gt inherits from &gt <strong>EventTarget Interface</strong><br>
-                    <strong>document object</strong> &gt inherits from &gt <strong>Document Interface</strong> &gt inherits from &gt <strong>EventTarget Interface</strong>
+                    To set HTML content for an element, we can only use <strong><code>.innerHTML</code></strong>. 
+                    Using <strong><code>.textContent</code></strong> will include the HTML as plain text inside the element.
                 </p>
-                <p><strong>EventTarget Interface</strong> does not have any properties and only three methods:</p>
+                <p>
+                    Also identified the difference between <strong><code>.textContent</code></strong> and <strong><code>.innerText</code></strong>. 
+                    <strong><code>.textContent</code></strong> returns all the element's HTML text regardless of how CSS might hide. 
+                    <strong><code>.innerText</code></strong> only returns what is displayed on the page by taking CSS into consideration.
+                </p>
+            </div>
+
+            <div>
+                <h2>Add New Page Content</h2>
                 <ul>
-                    <li><strong>.addEventListener()</strong></li>
-                    <li><strong>.removeEventListener()</strong></li>
-                    <li><strong>.dispatchEvent()</strong></li>
+                    <li><strong><code>.createElement()</code></strong></li>
+                    <li><strong><code>.appendChild()</code></strong></li>
+                    <li><strong><code>.createTextNode()</code></strong></li>
+                    <li><strong><code>.insertAdjacentHTML()</code></strong></li>
                 </ul>
-            </div>
-
-            <div>
-                <h2>Listening for Events</h2>
-                <p>psuedo-code to explain <strong>.addEventListener</strong>:</p>
-                <img src="../images/eventListener_pseudo-code.png" alt="event listener psuedo-code">
-                <p>An event listener needs three things:</p>
-                <ol>
-                    <li>an event target - this is called the <strong>target</strong></li>
-                    <li>the type of event to listen for - this is called the <strong>type</strong></li>
-                    <li>a function to run when the event occurs - this is called the <strong>listener</strong></li>
-                </ol>
+                <h3><strong><code>.createElement()</code></strong></h3>
                 <p>
-                    The <strong>&ltevent-target&gt</strong> <em>(the target)</em> goes right back to <strong>document object</strong>, a <strong>&ltp&gt</strong> element, etc...
+                    <strong><code>.createElement()</code></strong> is a method used on the <strong><code>document</code></strong>
+                </p>
+                <img src="../images/createElement_exapmle.png" alt="createElement() example">
+                <hr>
+                <iframe src="https://youtube.com/embed/sWWH7Knwjhg"></iframe>                
+                <h3><strong><code>.appendChild()</code></strong></h3>
+                <p>
+                    <strong><code>.createElement</code></strong> only makes the element, but does not add it to the DOM.
+                    <strong><code>.appendChild</code></strong> method will add the created element to the page. 
+                    To use the <strong><code>.appendChild</code></strong> method, it needs to be called on by another element, 
+                    not the <strong>document</strong> object.
+                </p>
+                <img src="../images/appenedChild_example.png" alt="appendChild() example">
+                <p>
+                    The <strong><code>appendChild()</code></strong> method is called on one element, and passed to the element to append to.
+                    The element that is about to be appended is added as the last child. 
+                    In the example avoce, the <strong><code>&ltspan&gt</code></strong> element will appear in the DOM as a child of the 
+                    <strong><code>&lth1&gt</code></strong>; but will appear at the end, after all text and any other elements that might be in the <strong><code>&lth1&gt</code></strong>.
                 </p>
                 <p>
-                    The <strong>&ltfunction-to-run-when-an-event-happens</strong> <em>(the listener)</em> is a function to run when the event actually occurs.
+                    <strong><code>.appendChild()</code></strong> <em>NEEDS</em> an element. It <em>must</em> be called on an existing element. 
+                    Calling the method on the <strong>document</strong> object without an element, will produce an error.
                 </p>
-                <p>event listener from pseudo-code earlier to a <em>real</em> example:</p>
-                <img src="../images/eventListener_example.png" alt="example of event listener">
+                <iframe src="https://youtube.com/embed/yYfs4AUI99w"></iframe>
+                <hr>
+                <h3>.createTextNode()</h3>
+                <p>
+                    <strong><code>.createTextNode()</code></strong> is similar to <strong><code>.createElement()</code></strong>; 
+                    Except instead of an element, it creates new <em>text nodes</em>. 
+                </p>
+                <p>
+                    Because it is similar to <strong><code>.textContent</code></strong> property, it is often faster to use that property instead of the <strong><code>.createTextNode()</code></strong> method.
+                </p>
+                <p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode">Link: MDN | <code>createTextNode()</code> method</a>
+                </p>
+                <hr>
+                <h3>.insertAdjacentHTML()</h3>
+                <p>
+                    <strong><code>.appendChild()</code></strong> method will add an element as the last child of the parent element. 
+                    It's impossible to put it as the first child or anywhere else; it <em>has</em> to be the last child. 
+                </p>
+                <p>
+                    <strong><code>.insertAdjacentHTML()</code></strong> method allows us to decide where to put the element in the parent element.
+                    It has to be called with two arguments:
+                </p>
                 <ul>
-                    <li>the target is the first <strong>&lth1&gt</strong> element on the page</li>
-                    <li>the event type to listen for is a <strong>"click"</strong> event</li>
-                    <li>The listener is a function that logs to console: <strong>"The heading was clicked!"</strong></li>
-                </ul>
-            </div>
-
-            <div>
-                <h2>Add an Event Listener</h2>
-                <p>
-                    Project starter code:
-                    <a href="https://github.com/udacity/course-JS-and-the-DOM" target="_blank">https://github.com/udacity/course-JS-and-the-DOM</a>
-                </p>
-                <iframe src="https://youtube.com/embed/8qnQbFtXpto"></iframe>
-                <img src="../images/addEvenetListener_to_Project.png" alt="Add Event Listener to Project file">
-            </div>
-
-            <div>
-                <h2>More Events to Listen To</h2>
-                <p>
-                    There is a full list of all possible events to listen for: 
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank">MDN Event Reference</a>
-                </p>
-            </div>
-
-            <div>
-                <h2>Removing an Event Listener</h2>
-                <p>
-                    The <strong>.addEventListener()</strong> event will listen for and respond to <em>all</em> click events.<br>
-                    The new version of <strong>.addEventListener()</strong> specification <em>does</em> allow for an object to be passed as a third parameter.
-                    This object may be used to configure how <strong>.addEventListener()</strong> method behaves.
-                    There is an option to listen for a single event; however, this configuration object is not widely supported yet.
-                </p>
-                <p>psuedo-code to explain <strong>.removeEventListenter()</strong>:</p>
-                <img src="../images/removeEventListener_pseudo-code.png" alt="remove event listener pseudo-code">
-                <p>Remember, the <em>listener</em> function must be the <em>exact</em> same function as the one used in the <strong>.addEventListener()</strong> call, not just an identical looking function.</p>
-                <img src="../images/example_removeEventListener_pseudo-code.png" alt="remove event listener example">
-                <p>This works because <strong>.addEventListener()</strong> and <strong>.removeEventListener()</strong>:</p>
-                <ul>
-                    <li>have the same <strong><em>target</em></strong></li>
-                    <li>have the same <strong><em>type</em></strong></li>
-                    <li>and pass <strong><em>the exact same listener</em></strong></li>
-                </ul>
-                <p>An exmaple of using <strong>.removeEventListener()</strong> incorrectly:</p>
-                <img src="../images/incorrect_example_removeEventListener_pseudo-code.png" alt="incorrect use of remove event listener example">
-                <p>Why does this <em>NOT</em> work:</p>
-                <ul>
-                    <li>both <strong>.addEventListener()</strong> and <strong>.removeEventListener()</strong> have the same <strong><em>target</em></strong></li>
-                    <li>both <strong>.addEventListener()</strong> and <strong>.removeEventListener()</strong> have the same <strong><em>type</em></strong></li>
                     <li>
-                        <strong>.addEventListener()</strong> and <strong>.removeEventListener()</strong> have their own distint <strong><em>listener</em></strong> funtions...
-                        They do not refer to the exact same function <strong><em>(This is the reason the event listener removal fails)</em></strong>
+                        <strong><em>position</em></strong> - the location of the HTML:
+                        <ul>
+                            <li><strong>beforebegin</strong> - inserts the HTML text as the previous sibling</li>
+                            <li><strong>afterbegin</strong> - inserts the HTML text as the first child</li>
+                            <li><strong>beforeend</strong> - inserts the HTML text as the last child</li>
+                            <li><strong>afterend</strong> - inserts the HTML text as a following sibling</li>
+                        </ul>
+                    </li>
+                    <li><strong><em>text</em></strong> - the HTML text that is going to be inserted</li>
+                </ul>
+                <iframe src="https://youtube.com/embed/jLgn7ERoUGU"></iframe>
+                <p><em>
+                    <strong>Note</strong>: The text has to be regular text. Typing HTML will display the HTML on the page as text.
+                </em></p>
+                <img src="../images/insertAdjacentHTML_example.png" alt=".insertAdjacentHTML() method example">              
+            </div>
+
+            <div class="review">
+                <p>Methods for createing DOM elements and adding them to the page:</p>
+                <ul>
+                    <li><strong><code>.createElement()</code></strong> - create new elements</li>
+                    <li><strong><code>.appendChild()</code></strong> - add a child element to a parent element as its last child</li>
+                    <li><strong><code>.createTextNode()</code></strong> - create a text node</li>
+                    <li><strong><code>.insertAdjacentHTML()</code></strong> - put HTML text anywhere around an element</li>
+                </ul>
+                <p>Important notes:</p>
+                <ul>
+                    <li>
+                        If an element <em>already exists in the DOM</em> and this element is passed to <strong><code>.appendChild()</code></strong>, 
+                        the <strong><code>.appendChild()</code></strong> method will <em>move</em> it rather than duplicating it
+                    </li>
+                    <li>
+                        An element's <strong><code>.textContent</code></strong> property is used more often than creating a text node with <strong><code>.createTextNode()</code></strong> method
+                    </li>
+                    <li>
+                        The <strong><code>.insertAdjacentHTML()</code></strong> method's second argument <em>has</em> to be text; you can't pass an element
                     </li>
                 </ul>
-                <img src="../images/memory_address_event_listener.png" alt="Function memory in different places">
-                <p>Two functions can look the same, but live in two different places in memory.</p>
+            </div>
+
+            <div>
+                <h2>Remove Page Content</h2>
+                <p>Two methods to remove content from the page:</p>
+                <ul>
+                    <li><strong><code>.removeChild()</code></strong></li>
+                    <li><strong><code>.remove()</code></strong></li>
+                </ul>
+                <p>Two properites:</p>
+                <ul>
+                    <li><strong><code>.firstElementChild</code></strong></li>
+                    <li><strong><code>.parentElement</code></strong></li>
+                </ul>
+                <h3>Removing a Child Element</h3>
                 <p>
-                    When writing code: "<strong>..., function myEventListeningFunction() {...});</strong>", the <em>second</em> function was stored in a different location in memory.
-                    This is similar to a resturant chain; If you place an order at one pizza place, and drive to a different pizza place instead of the one you ordered from, they will not have your order available.
+                    Using <strong><code>.removeChild()</code></strong> method removes a child element. 
+                    This is essentially the opposite of the <strong><code>.appendChild()</code></strong> method. 
+                    requirements for <strong><code>.removeChild()</code></strong> method:
+                </p>
+                <ul>
+                    <li>A parent element</li>
+                    <li>The child element that will be removed</li>
+                </ul>
+                <p><strong><code><em>&ltparent-element&gt</em>.removeChild(<em>&ltchild-to-removed&gt</em>);</code></strong></p>
+                <iframe src="https://youtube.com/embed/xeLZabb-nXc"></iframe>
+                <p>
+                    Like the <strong><code>.appendChild()</code></strong> method, <strong><code>.removeChild()</code></strong> also <em>requires access to the <strong>parent to function.</strong></em>
+                </p>
+                <p>
+                    Every element has a <strong>parentElement</strong> property that refers to its parent. 
+                    If we have access to the child element, we can use the <strong>parentElement</strong> property to <em>"move focus"</em> to the element's parent.
+                    Then the methods <strong><code>.removeChild()</code></strong> or <strong><code>.appendChild()</code></strong> may be called on the referenced parent element.
+                </p>
+                <img src="../images/removeChild_method_example.png" alt=".removeChild() method example">
+                <p>
+                    <strong><code>
+                        const mainHeading = document.querySelector('h1');
+                    </code></strong><br>
+                    <br>
+                    The code will select the first <strong><code>&lth1&gt</code></strong> on the page and stores it in the mainHeading variable.
+                </p>
+                <p>
+                    <strong><code>
+                        const mainHeading = document.querySelector('h1');
+                    </code></strong><br>
+                    <br>
+                    This starts with the <strong><code>mainHeading</code></strong> variable. 
+                    calls <strong><code>.parentElement</code></strong> so the focus of the next code is directed at the parent element. 
+                    Then <strong><code>.removeChild()</code></strong> is called on the parent element.
+                    Finally, <strong><code>mainHeading</code></strong> itself is passed as the element that needs to be removed from its parent.<br>
+                    <em>Essentially, an element uses itself to remove itself from its parent.</em>
+                </p>
+                <p>
+                    We could simplify this if we're just going to remove the entire element with the <strong><code>.remote()</code></strong> method.
+                </p>
+                <img src="../images/remove_method_example.png" alt=".remove() method example">
+            </div>
+
+            <div class="review">
+                <p>Two methods to remove an element from the page:</p>
+                <ul>
+                    <li><strong><code>.removeChild()</code></strong></li>
+                    <li><strong><code>.remove()</code></strong></li>
+                </ul>
+                <p>
+                    <strong><code>.removeChild</code></strong> must be called on the parent of the element being removed and must be passed the child to be removed. 
+                    <strong><code>.remove()</code></strong> can be called directly on the element to delete.
+                </p>
+                <p>Properties to use when removing content:</p>
+                <ul>
+                    <li><strong><code>.firstChild</code></strong></li>
+                    <li><strong><code>.firstElementChild</code></strong></li>
+                    <li><strong><code>.parentElement</code></strong></li>
+                </ul>
+                <p>
+                    <strong><code>.firstElementChild</code></strong> wil always return the first element. 
+                    <strong><code>.firstChild</code></strong> <em>might</em> return whitespace (if any) to preserve the formatting of the HTML source code.
                 </p>
             </div>
 
             <div>
-                <h2>Event Phases</h2>
-                <p>There are three different event phases during the event's lifecycle. The phases occur in order:</p>
-                <ol>
-                    <li>the <strong>capturing</strong> phase</li>
-                    <li>the <strong>at target</strong> phase</li>
-                    <li>the <strong>bublling</strong> phase</li>
-                </ol>
+                <h2>Style Page Content</h2>
                 <p>
-                    Most event handlers run during <strong>at target</strong> phase. 
-                    The event arrives at the button <em>(its target)</em>, and there's only a handler for it right there, so the event handler gets run.
+                    We can control the page and element styling using the following properties and methods:
                 </p>
+                <ul>
+                    <li><strong><code>.style.<em>&ltproperty&gt</em></code></strong></li>
+                    <li><strong><code>.cssText</code></strong></li>
+                    <li><strong><code>.setAttribute()</code></strong></li>
+                    <li><strong><code>.className</code></strong></li>
+                    <li><strong><code>.classList</code></strong></li>
+                </ul>
+                <p>To access an element's <strong>style</strong> attribute, use the <strong><code>.style</code></strong> property.</p>
+                <pre><strong><code>
+    const example = document.querySelector('h1');   
+    example.style.color = 'red';                    </code></strong></pre>
                 <p>
-                    Sometimes there's a collection of items <em>-- such as a list --</em>
-                    and want to have ONE handler cover every <em>item</em> <em>(and still have the option of individual handlers for some items)</em>.
-                    By default, if clicking on a child item while the handler doesn't intercept the click, the event will "bubble" upward to the parent, and keep bubbling until something handles it or it hits the document.
+                    Using <strong><code>.style</code></strong> property, only <em>ONE</em> CSS style can be modified at a time.
                 </p>
-                <p>The <strong>capturing</strong> phase lets the parent intercept an event before it reaches a child.</p>
+                <iframe src="https://youtube.com/embed/YvCtuOUMSkE"></iframe>
+                <h3>Access Multiple Styles with cssText</h3>
+                <p>
+                    <strong><code>.style.cssText</code></strong> property allows writing CSS styles similar to using a stylesheet. 
+                    While using <strong><code>.cssText</code></strong>, the styles will be writen just like writing CSS.
+                </p>
+                <pre><strong><code>
+    const example = document.querySelector('.class');                               
+    example.style.cssText = 'width: 30px; text-decoration: underline; color: red';  </code></strong></pre>
+                <h3>Setting styles with setAttribute</h3>
+                <p>
+                    <strong><code>.setAttribute()</code></strong> method is similar to the <strong><code>.style.cssText</code></strong> property;
+                    It allows you to set multiple styles for an element.
+                </p>
+                <pre><strong><code>
+    const example = documnet.querySelector('#idName');                                          
+    example.setAttribute('style', 'color: orange; background-color: black; font-size: 20px;');  </code></strong></pre>
+                <p>
+                    <strong><code>.setAttribute()</code></strong> is not <em>just</em> for styling page elements. 
+                    This method may be used to set <em>any</em> attribute for an element; such as giving an element an ID.
+                </p>
+                <pre><strong><code>
+    const exampleHeading = document.querySelector('h1');                        
+    <em>//add an ID to the heading's sibling element</em>                               
+    exampleHeading.nextElementSibling.setAttribute('id', 'example-sibling');    
+    <em>//use the newly added ID to access that element</em>                            
+    document.querySelector('#example-sibling').style.backgroundColor = 'red';   </code></strong></pre>
             </div>
 
             <div>
-                <h2>Eent Firing Order</h2>
-                <iframe src="https://youtube.com/embed/rGhgPPYc2sg"></iframe>
-                <ol>
-                    <li>
-                        Clicking on the event starts the <strong><em>capturing</em></strong> phase at the <strong>html</strong> tag, 
-                        working its way down to the element that was clicked.
-                    </li>
-                    <li>When it reached the element that was clicked, it's in the <strong><em>target</em></strong> phase</li>.
-                    <li>Then it switches to the <strong><em>bubbling</em></strong> phase and works its way back to the <strong>html</strong>tag.</li>
-                </ol>
-                <img src="../images/event-phases.jpg" alt="Event Phases">
-                <h3>Which Phase is Used?</h3>
-                <p>There's a <em>third</em> argument used with <strong>.addEventListener()</strong>:</p>
-                <ol>
-                    <li><em>type</em></li>
-                    <li><em>listener</em></li>
-                    <li><em>useCapture</em> or <em>capturing</em></li>
-                </ol>
+                <h2>Setting Styles and Seperation of Concerns</h2>
+                <ul>
+                    <li>HTML should be in a <strong>.htm</strong> document</li>
+                    <li>CSS should be in a <strong>.css</strong> document</li>
+                    <li>Interactivity <em>(JavaScript)</em> should be in a <strong>.js</strong> document</li>
+                </ul>
                 <p>
-                    <strong>By default, when <strong>.addEventListener()</strong> is called with only two arguments, the method defaults to using the bubbling phase.</strong>
-                </p>
-                <img src="../images/addEvenetListener_three_arguments.png" alt="addEventListener() with three methods">
-                <p>The <strong>true</strong> parameter at the end of the <strong>.addEventListener()</strong> method makes the event respond in the <strong>capturing</strong> phase.</p>
-                <iframe src="https://youtube.com/embed/4WYyk3AhCOU"></iframe>
-            </div>
-
-            <div>
-                <h2>The Event Object</h2>
-                <p>
-                    When an event occurs, the browser includes an <strong>event object</strong>.
-                    This is a JavaScripts object that includes information about the event itself. 
-                    According to MDN, the <strong>.addEventListener()</strong>'s <em>listener</em> receives:<br>
-                    <strong>
-                        a notification (an object that implements the Event Interface) when an event of the specified type occurs
-                    </strong>
-                </p>
-                <p>Adding a parameter to the <strong>.addEventListener()</strong> so we can store this event object</p>
-                <img src="../images/add_param_to_eventListener.png" alt="Add parameter to .addEventListener()">
-                <p><em>
-                    <strong>Note:</strong> There is nothing special about the parameter name <strong>(event)</strong>. 
-                    The parameter is just a variable and, therefore, may be whatever makes sense.
-                </em></p>
-                <iframe src="https://youtube.com/embed/134IQEN89VQ"></iframe>
-                <p>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">MDN | MouseEvent</a>
-                </p>
-                <img src="../images/mouseEvent_or_pointerEvent.png" alt="mouseEvent or pointerEvent">
-            </div>
-
-            <div>
-                <h2>Event Delegation</h2>
-                <p>
-                    The event object has a <strong>.target</strong> property. 
-                    This property references the <em>target</em> of the event. 
-                    This is where <strong>capturing</strong>, <strong> target</strong>, and <strong>bubbling</strong> phases become more important and useful
-                </p>
-                <p>The process when clicking on a paragraph element:</p>
-                <ol>
-                    <li>A paragraph element is clicked</li>
-                    <li>The event goes through the paturing phase</li>
-                    <li>It reaches the target</li>
-                    <li>It switches to the bubbling phase and starts going up the DOM tree</li>
-                    <li>When it hits the <strong>&ltdiv&gt</strong> element, it runs the listener function</li>
-                    <li>Inside the listener function, <strong>event.target</strong> is the element that was clicked</li>
-                </ol>
-                <p>
-                    <strong>event.target</strong> gives us direct access to the paragraph element that was clicked. 
-                    Because we have access to the element directly, we can access its <strong>.textContent</strong>, modify its styles, 
-                    update the classes it has, etc... <em>(anything we want/need to do really)</em>.
-                </p>
-                <img src="../images/event_target_example.png" alt="event.target example">
-            </div>
-
-            <div>
-                <h2>The DOM is Built Incrementally</h2>
-                <p>
-                    When the parser gets to a <strong>&ltscript&gt</strong> tag, it must wiat to download the script file and execute that JavaScript code.
+                    Keep all the styles in CSS. Control class attributes for an element with JavaScript code.
+                    This allows change to styling by adding or removing classes.
                 </p>
                 <p>
-                    JavaScript file should be placed at the bottom of the HTML so the DOM may build all elements first.
-                    If JS runs before the DOM has a chance to build all the elements, <strong>querySelector</strong> will run into issues
-                    because the DOM does have a query to select yet.
-                </p>
-                <p>The alternative would be to use browser events; <strong>DOMContentLoaded</strong></p>
-            </div>
-
-            <div>
-                <h2>The DOMContentLoaded Event</h2>
-                <p>
-                    The <strong>DOMContentLoaded</strong> event will fire when the DOM has fully loaded.
-                    It can be <em>listened</em> the same way other events are <em>listened</em> for:
-                </p>
-                <img src="../images/domContentLoaded_event.png" alt="DOMContentLoaded event">
-                <iframe src="https://youtube.com/embed/bmtMp4Rgryc"></iframe>
-                <p>
-                    Because of the <strong>DOMContentLoaded</strong> event, we can use it to keep our JS code in the <strong>&lthead&gt</strong> of the HTML page instead of the bottom.
+                    <strong><code>.className</code></strong> property returns a space-seperated string of all element's classes.<br>
+                    <strong><code>const listOfClasses = example.className;<br>console.log(listOfClasses);</code></strong>
                 </p>
                 <p>
-                    The <strong>DOMContentLoaded</strong> event will prevent the DOM code from running when the browser gets to it. 
-                    Then the event will fire; After the DOM has been constructed.<br>
-                    There is a <strong>load</strong> event, but this takes longer; It waits for all images, stylesheets, etc... to load.
+                    Because <strong><code>.className</code></strong> is a property, it can be set its value just by assigning a string to the property.<br>
+                    <strong><code>example.className = 'new-class';</code></strong><br>
+                    This erases any existing classes in the element's <strong>class</strong> attribute and replaces it with the single class <strong>new-class</strong>.
                 </p>
                 <p>
-                    Even though <strong>DOMContentLoaded</strong> can <em>fix</em> the issue of having JS in the <strong>&lthead&gt</strong>, 
-                    it does mean more code which usually isn't the best way to do something.
-                    It is better to put the JS code at the bottom of the HTML file just BEFORE the closing <strong>&lt/body&gt</strong> tag.
+                    To add or remove an individual class, the <strong><code>.className</code></strong> space-seperated string into an array using <strong><code>.split()</code></strong><br>
+                    <strong><code>const arrayOfClasses = listOfClasses.split(' ');</code></strong><br>
+                    With an array of classes, we can do data-intesive calculations:
+                </p>
+                <ul>
+                    <li>use a <strong>for</strong> loop to loop through the list of class names</li>
+                    <li>use <strong><code>.push()</code></strong> to add an item to the list</li>
+                    <li>use <strong><code>.splice()</code></strong> to remove an item from the list</li>
+                    <li>use <strong><code>.join()</code></strong> to convert the array back into a string</li>
+                </ul>
+                <p>
+                    The <strong><code>.classList</code></strong> property is newer than <strong><code>.className</code></strong>.<br>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList">MDN | classList Property</a>
                 </p>
                 <p>
-                    It can be good to use JS in the <strong>&lthead&gt</strong> of the HTML and use <strong>DOMContentLoaded</strong> when you have JavaScript code that needs to run <em>as soon as possible</em>.
-                    This way it'll run as early as possible, but not too early that the DOM isn't ready for it.
+                    <strong><code>.classList</code></strong> property has many methods of its own. Some of the popular ones are:
                 </p>
+                <ul>
+                    <li><strong><code>.add()</code></strong> - add a class to the list</li>
+                    <li><strong><code>.remove()</code></strong> - removes a class from the list</li>
+                    <li><strong><code>.toggle()</code></strong> - add the class if it doesn't exists or removes it if it does exist</li>
+                    <li><strong><code>.contains()</code></strong> - returns boolean based on if the class exists in the list or not</li>
+                </ul>
+                <iframe src="https://youtube.com/embed/SIjgdT1O2Ns"></iframe>
             </div>
 
         </div>
@@ -321,6 +403,7 @@
                     <li><a href="js_syntax.html">JavaScript Syntax</a></li>
                     <li><a href="dom.html">Document Object Model</a></li>
                     <li><a href="create_content_with_js.html">Create Content With JavaScript</a></li>
+                    <li><a href="browser_events.html">Browser Events</a></li>
                     <li><a href="performance.html">Performance</a></li>
                     <br>
                     <li><a href="projects.html">Projects</a></li>

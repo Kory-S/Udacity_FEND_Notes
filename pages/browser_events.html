@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<htm lang="en">
+    <head>
+        <meta charset = "utf-8">
+        <title>Create with JS</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+                
+    <body>
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS Notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="intro_to_javascript.html">Intro To JavaScript</a></li>
+                    <li><a href="beyond_basics_js.html">Beyond the Basics JavaScript</a></li>
+                    <li><a href="js_loops.html">JavaScript Loops</a></li>
+                    <li><a href="js_syntax.html">JavaScript Syntax</a></li>
+                    <li><a href="dom.html">Document Object Model</a></li>
+                    <li><a href="create_content_with_js.html">Create Content With JavaScript</a></li>
+                    <li><a href="browser_events.html">Browser Events</a></li>
+                    <li><a href="performance.html">Performance</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="test_page.html">Testing Workplace</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div>
+            <h1>Working with Browser Events</h1>
+            <div>
+                <h2>What is an event</h2>
+                <p>
+                    An event is like an announcement. When an event happens, the browser will make an "accouncement" and we can use JavaScript to listen for and respond to the "announcement".
+                </p>
+                <h3>Seeing an Event</h3>
+                <p>
+                    Chrome browser has a special <strong>monitorEvents()</strong> function that will let us see different events as they occur.
+                </p>
+                <p> 
+                    <a href="https://developer.chrome.com/docs/devtools/console/utilities/#monitorEvents-function" target="_blank">
+                    <strong>Documentation for monitorEvents() function</strong> in Console Utilities API reference of Chrome DevTools documentation.</a>
+                </p>
+                <iframe src="https://youtube.com/embed/6PFZQxV-d_8"></iframe>
+                <p>
+                    The <strong>monitorEvents()</strong> function will keep spitting out all events happening on the targeted element until the page is refreshed (or closed).
+                    Alternatively, Chrome <em>does</em> offer a function, <strong>.unmonitorEvents()</strong> that will turn off announcing events for the targeted element.
+                </p>
+                <img src="../images/monitorEvents.png" alt="monitorEvents(document);">
+                <img src="../images/unmonitorEvents.png" alt="unmonitorEvents(document);">
+                <p><em>
+                    <strong>Note:</strong> <strong>monitorEvents()</strong> is used for development/testing purposes and is not intended for production.
+                </em></p>
+            </div>
+
+            <div>
+                <h2>Event Targets</h2>
+                <p>
+                    The <strong>Node Interface</strong> inherits from the <strong>EventTarget Interface</strong><br>
+                    <em>(See 'Document Object Model' notes for information on <strong>Node Interface</strong> and <strong>Element Interface</strong>)</em>
+                </p>
+                <img src="../images/EventTarget_Node_Element.jpg" alt="EvenetTarget &lt- Node &lt- Element">
+                <p class="rgb_test">
+                    <strong>EventTarget</strong> is an interface implemented by objects that can receive events and may have listeners for them<br>
+                    ------------------and------------------<br>
+                    Element, document, and window are the most common event targets, but other objects can be event targets too.<br><br>
+                    Source: <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_blank">MDN EventTarget Page</a>
+                </p>
+                <p>
+                    The EventTarget is at the top of the chain. This means that it does not inherit any properties or methods from other interfaces;
+                    however, every other interface inherits from it and therefore contain its properties and methods.<br>
+                    This means each of the following is an "event target":
+                </p>
+                <ul>
+                    <li>The <strong>document</strong> page</li>
+                    <li>A paragraph element</li>
+                    <li>A video element</li>
+                    <li>etc...</li>
+                </ul>
+                <p>
+                    Both the <strong>document</strong> object and <strong><em>any</em> DOM element</strong> can be an event target because they inherit from the <strong>EventTarget Interface</strong>.<br><br>
+                    <strong>individual element</strong> &gt inherits from &gt <strong>Element Interface</strong> &gt inherits from &gt <strong>EventTarget Interface</strong><br>
+                    <strong>document object</strong> &gt inherits from &gt <strong>Document Interface</strong> &gt inherits from &gt <strong>EventTarget Interface</strong>
+                </p>
+                <p><strong>EventTarget Interface</strong> does not have any properties and only three methods:</p>
+                <ul>
+                    <li><strong>.addEventListener()</strong></li>
+                    <li><strong>.removeEventListener()</strong></li>
+                    <li><strong>.dispatchEvent()</strong></li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Listening for Events</h2>
+                <p>psuedo-code to explain <strong>.addEventListener</strong>:</p>
+                <img src="../images/eventListener_pseudo-code.png" alt="event listener psuedo-code">
+                <p>An event listener needs three things:</p>
+                <ol>
+                    <li>an event target - this is called the <strong>target</strong></li>
+                    <li>the type of event to listen for - this is called the <strong>type</strong></li>
+                    <li>a function to run when the event occurs - this is called the <strong>listener</strong></li>
+                </ol>
+                <p>
+                    The <strong>&ltevent-target&gt</strong> <em>(the target)</em> goes right back to <strong>document object</strong>, a <strong>&ltp&gt</strong> element, etc...
+                </p>
+                <p>
+                    The <strong>&ltfunction-to-run-when-an-event-happens</strong> <em>(the listener)</em> is a function to run when the event actually occurs.
+                </p>
+                <p>event listener from pseudo-code earlier to a <em>real</em> example:</p>
+                <img src="../images/eventListener_example.png" alt="example of event listener">
+                <ul>
+                    <li>the target is the first <strong>&lth1&gt</strong> element on the page</li>
+                    <li>the event type to listen for is a <strong>"click"</strong> event</li>
+                    <li>The listener is a function that logs to console: <strong>"The heading was clicked!"</strong></li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Add an Event Listener</h2>
+                <p>
+                    Project starter code:
+                    <a href="https://github.com/udacity/course-JS-and-the-DOM" target="_blank">https://github.com/udacity/course-JS-and-the-DOM</a>
+                </p>
+                <iframe src="https://youtube.com/embed/8qnQbFtXpto"></iframe>
+                <img src="../images/addEvenetListener_to_Project.png" alt="Add Event Listener to Project file">
+            </div>
+
+            <div>
+                <h2>More Events to Listen To</h2>
+                <p>
+                    There is a full list of all possible events to listen for: 
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank">MDN Event Reference</a>
+                </p>
+            </div>
+
+            <div>
+                <h2>Removing an Event Listener</h2>
+                <p>
+                    The <strong>.addEventListener()</strong> event will listen for and respond to <em>all</em> click events.<br>
+                    The new version of <strong>.addEventListener()</strong> specification <em>does</em> allow for an object to be passed as a third parameter.
+                    This object may be used to configure how <strong>.addEventListener()</strong> method behaves.
+                    There is an option to listen for a single event; however, this configuration object is not widely supported yet.
+                </p>
+                <p>psuedo-code to explain <strong>.removeEventListenter()</strong>:</p>
+                <img src="../images/removeEventListener_pseudo-code.png" alt="remove event listener pseudo-code">
+                <p>Remember, the <em>listener</em> function must be the <em>exact</em> same function as the one used in the <strong>.addEventListener()</strong> call, not just an identical looking function.</p>
+                <img src="../images/example_removeEventListener_pseudo-code.png" alt="remove event listener example">
+                <p>This works because <strong>.addEventListener()</strong> and <strong>.removeEventListener()</strong>:</p>
+                <ul>
+                    <li>have the same <strong><em>target</em></strong></li>
+                    <li>have the same <strong><em>type</em></strong></li>
+                    <li>and pass <strong><em>the exact same listener</em></strong></li>
+                </ul>
+                <p>An exmaple of using <strong>.removeEventListener()</strong> incorrectly:</p>
+                <img src="../images/incorrect_example_removeEventListener_pseudo-code.png" alt="incorrect use of remove event listener example">
+                <p>Why does this <em>NOT</em> work:</p>
+                <ul>
+                    <li>both <strong>.addEventListener()</strong> and <strong>.removeEventListener()</strong> have the same <strong><em>target</em></strong></li>
+                    <li>both <strong>.addEventListener()</strong> and <strong>.removeEventListener()</strong> have the same <strong><em>type</em></strong></li>
+                    <li>
+                        <strong>.addEventListener()</strong> and <strong>.removeEventListener()</strong> have their own distint <strong><em>listener</em></strong> funtions...
+                        They do not refer to the exact same function <strong><em>(This is the reason the event listener removal fails)</em></strong>
+                    </li>
+                </ul>
+                <img src="../images/memory_address_event_listener.png" alt="Function memory in different places">
+                <p>Two functions can look the same, but live in two different places in memory.</p>
+                <p>
+                    When writing code: "<strong>..., function myEventListeningFunction() {...});</strong>", the <em>second</em> function was stored in a different location in memory.
+                    This is similar to a resturant chain; If you place an order at one pizza place, and drive to a different pizza place instead of the one you ordered from, they will not have your order available.
+                </p>
+            </div>
+
+            <div>
+                <h2>Event Phases</h2>
+                <p>There are three different event phases during the event's lifecycle. The phases occur in order:</p>
+                <ol>
+                    <li>the <strong>capturing</strong> phase</li>
+                    <li>the <strong>at target</strong> phase</li>
+                    <li>the <strong>bublling</strong> phase</li>
+                </ol>
+                <p>
+                    Most event handlers run during <strong>at target</strong> phase. 
+                    The event arrives at the button <em>(its target)</em>, and there's only a handler for it right there, so the event handler gets run.
+                </p>
+                <p>
+                    Sometimes there's a collection of items <em>-- such as a list --</em>
+                    and want to have ONE handler cover every <em>item</em> <em>(and still have the option of individual handlers for some items)</em>.
+                    By default, if clicking on a child item while the handler doesn't intercept the click, the event will "bubble" upward to the parent, and keep bubbling until something handles it or it hits the document.
+                </p>
+                <p>The <strong>capturing</strong> phase lets the parent intercept an event before it reaches a child.</p>
+            </div>
+
+            <div>
+                <h2>Eent Firing Order</h2>
+                <iframe src="https://youtube.com/embed/rGhgPPYc2sg"></iframe>
+                <ol>
+                    <li>
+                        Clicking on the event starts the <strong><em>capturing</em></strong> phase at the <strong>html</strong> tag, 
+                        working its way down to the element that was clicked.
+                    </li>
+                    <li>When it reached the element that was clicked, it's in the <strong><em>target</em></strong> phase</li>.
+                    <li>Then it switches to the <strong><em>bubbling</em></strong> phase and works its way back to the <strong>html</strong>tag.</li>
+                </ol>
+                <img src="../images/event-phases.jpg" alt="Event Phases">
+                <h3>Which Phase is Used?</h3>
+                <p>There's a <em>third</em> argument used with <strong>.addEventListener()</strong>:</p>
+                <ol>
+                    <li><em>type</em></li>
+                    <li><em>listener</em></li>
+                    <li><em>useCapture</em> or <em>capturing</em></li>
+                </ol>
+                <p>
+                    <strong>By default, when <strong>.addEventListener()</strong> is called with only two arguments, the method defaults to using the bubbling phase.</strong>
+                </p>
+                <img src="../images/addEvenetListener_three_arguments.png" alt="addEventListener() with three methods">
+                <p>The <strong>true</strong> parameter at the end of the <strong>.addEventListener()</strong> method makes the event respond in the <strong>capturing</strong> phase.</p>
+                <iframe src="https://youtube.com/embed/4WYyk3AhCOU"></iframe>
+            </div>
+
+            <div>
+                <h2>The Event Object</h2>
+                <p>
+                    When an event occurs, the browser includes an <strong>event object</strong>.
+                    This is a JavaScripts object that includes information about the event itself. 
+                    According to MDN, the <strong>.addEventListener()</strong>'s <em>listener</em> receives:<br>
+                    <strong>
+                        a notification (an object that implements the Event Interface) when an event of the specified type occurs
+                    </strong>
+                </p>
+                <p>Adding a parameter to the <strong>.addEventListener()</strong> so we can store this event object</p>
+                <img src="../images/add_param_to_eventListener.png" alt="Add parameter to .addEventListener()">
+                <p><em>
+                    <strong>Note:</strong> There is nothing special about the parameter name <strong>(event)</strong>. 
+                    The parameter is just a variable and, therefore, may be whatever makes sense.
+                </em></p>
+                <iframe src="https://youtube.com/embed/134IQEN89VQ"></iframe>
+                <p>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">MDN | MouseEvent</a>
+                </p>
+                <img src="../images/mouseEvent_or_pointerEvent.png" alt="mouseEvent or pointerEvent">
+            </div>
+
+            <div>
+                <h2>Event Delegation</h2>
+                <p>
+                    The event object has a <strong>.target</strong> property. 
+                    This property references the <em>target</em> of the event. 
+                    This is where <strong>capturing</strong>, <strong> target</strong>, and <strong>bubbling</strong> phases become more important and useful
+                </p>
+                <p>The process when clicking on a paragraph element:</p>
+                <ol>
+                    <li>A paragraph element is clicked</li>
+                    <li>The event goes through the paturing phase</li>
+                    <li>It reaches the target</li>
+                    <li>It switches to the bubbling phase and starts going up the DOM tree</li>
+                    <li>When it hits the <strong>&ltdiv&gt</strong> element, it runs the listener function</li>
+                    <li>Inside the listener function, <strong>event.target</strong> is the element that was clicked</li>
+                </ol>
+                <p>
+                    <strong>event.target</strong> gives us direct access to the paragraph element that was clicked. 
+                    Because we have access to the element directly, we can access its <strong>.textContent</strong>, modify its styles, 
+                    update the classes it has, etc... <em>(anything we want/need to do really)</em>.
+                </p>
+                <img src="../images/event_target_example.png" alt="event.target example">
+            </div>
+
+            <div>
+                <h2>The DOM is Built Incrementally</h2>
+                <p>
+                    When the parser gets to a <strong>&ltscript&gt</strong> tag, it must wiat to download the script file and execute that JavaScript code.
+                </p>
+                <p>
+                    JavaScript file should be placed at the bottom of the HTML so the DOM may build all elements first.
+                    If JS runs before the DOM has a chance to build all the elements, <strong>querySelector</strong> will run into issues
+                    because the DOM does have a query to select yet.
+                </p>
+                <p>The alternative would be to use browser events; <strong>DOMContentLoaded</strong></p>
+            </div>
+
+            <div>
+                <h2>The DOMContentLoaded Event</h2>
+                <p>
+                    The <strong>DOMContentLoaded</strong> event will fire when the DOM has fully loaded.
+                    It can be <em>listened</em> the same way other events are <em>listened</em> for:
+                </p>
+                <img src="../images/domContentLoaded_event.png" alt="DOMContentLoaded event">
+                <iframe src="https://youtube.com/embed/bmtMp4Rgryc"></iframe>
+                <p>
+                    Because of the <strong>DOMContentLoaded</strong> event, we can use it to keep our JS code in the <strong>&lthead&gt</strong> of the HTML page instead of the bottom.
+                </p>
+                <p>
+                    The <strong>DOMContentLoaded</strong> event will prevent the DOM code from running when the browser gets to it. 
+                    Then the event will fire; After the DOM has been constructed.<br>
+                    There is a <strong>load</strong> event, but this takes longer; It waits for all images, stylesheets, etc... to load.
+                </p>
+                <p>
+                    Even though <strong>DOMContentLoaded</strong> can <em>fix</em> the issue of having JS in the <strong>&lthead&gt</strong>, 
+                    it does mean more code which usually isn't the best way to do something.
+                    It is better to put the JS code at the bottom of the HTML file just BEFORE the closing <strong>&lt/body&gt</strong> tag.
+                </p>
+                <p>
+                    It can be good to use JS in the <strong>&lthead&gt</strong> of the HTML and use <strong>DOMContentLoaded</strong> when you have JavaScript code that needs to run <em>as soon as possible</em>.
+                    This way it'll run as early as possible, but not too early that the DOM isn't ready for it.
+                </p>
+            </div>
+
+        </div>
+
+        <nav>
+            <div>
+                <h2>Quick links to other notes:</h2>
+                <ul>
+                    <li><a href="../index.html">HTML Notes</a></li>
+                    <li><a href="css_notes.html">CSS Notes</a></li>
+                    <li><a href="css_continued_flexbox.html">CSS Flexbox</a></li>
+                    <li><a href="intro_to_javascript.html">Intro To JavaScript</a></li>
+                    <li><a href="beyond_basics_js.html">Beyond the Basics JavaScript</a></li>
+                    <li><a href="js_loops.html">JavaScript Loops</a></li>
+                    <li><a href="js_syntax.html">JavaScript Syntax</a></li>
+                    <li><a href="dom.html">Document Object Model</a></li>
+                    <li><a href="create_content_with_js.html">Create Content With JavaScript</a></li>
+                    <li><a href="browser_events.html">Browser Events</a></li>
+                    <li><a href="performance.html">Performance</a></li>
+                    <br>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="test_page.html">Testing Workplace</a></li>
+                </ul>
+            </div>
+        </nav>
+    </body>
+</html>
