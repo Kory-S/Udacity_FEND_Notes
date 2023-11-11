@@ -31,43 +31,55 @@
         </nav>
 
         <div>
-            <h1>Projects</h1>
+            <h1>Collaborate Using GitHub</h1>
             <div>
-                <h2>Project 1: Animal Trading Cards</h2>
-                <h3>Prototype example:</h3>
-                <img src="../images/animal_trading_card-prototype.png"></p>
-                <h3>Goal:</h3>
-                <p>Reproduce the styling to match the prototype example image using CSS.
-                The card will be recreated with a different animal image and text.</p>
-
-
-<!--Start Project 1 Animal Trading Card-->
-                <div>
-                    <h3>Project Work:</h3>
-                    <div class="p1_div p1_card">
-                        <h3 class="p1_h3">Lemur</h3>
-                        <img class="p1_img" src="./Project_1_animal-trading-card/project_1_lemurs.jpeg" alt="Lemur">
-                    
-                        <div class="p1_div p1_card p1_text_info">
-                            <p class="p1_p p1_interesting_fact">Lemurs are nocturnal and spend most of their lives in trees.</p>
-                            <ul class="p1_ul">
-                                <li class="p1_li"><span class="p1_label">Location</span>: Madagascar</li>
-                                <li class="p1_li"><span class="p1_label">Diet</span>: Fruits and berries</li>
-                                <li class="p1_li"><span class="p1_label">Average weight</span>: 6 pounds</li>
-                                <li class="p1_li"><span class="p1_label">Lifespan</span>: 18 years</li>
-                            </ul>
-                            <p class="p1_p">
-                                Lemurs originate from Mdagascar and the surrounding areas.
-                                They are generally social creatures. There are over 100 existing species of lemurs. 
-                                Most lemurs have large eyes, long tails and a pointed snout.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <h2>Overview</h2>
+                <ul>
+                    <li>Create repos with <strong><code>git init</code></strong> and <strong><code>git clone</code></strong></li>
+                    <li>Reviewing repos with <strong><code>git status</code></strong></li>
+                    <li>Using <strong><code>git log</code></strong> and <strong><code>git show</code></strong> to review past commits</li>
+                    <li>Make commits with <strong><code>git add</code></strong></li>
+                    <li>Commit to repo with <strong><code>git commit</code></strong></li>
+                    <li>Branching, merging branches, and resolving merge conflicts</li>
+                    <li>
+                        Undo git things:
+                        <ul>
+                            <li>
+                                <strong><code>git commit --amend</code></strong> to undo most recent commit or change wording of commit message
+                            </li>
+                            <li>
+                                <strong><code>git reset</code></strong>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-<!--End Project 1 Animal Trading Card-->
-            <h2>Project 2:</h2>
+
+            <div>
+                <h2>Remote Repositories</h2>
+                <p>
+                    git is a local version control. GitHub is a service for hosting version control repos.
+                    GitHub allows sharing and collaberating with multiple people.
+                </p>
+                <p>Topics to be covered:</p>
+                <ul>
+                    <li><strong><code>git remote</code></strong> - Mangae remote repository</li>
+                    <li><strong><code>git push</code></strong> - Send changes to remote repo</li>
+                    <li><strong><code>git pull</code></strong> - Retrieve updates from remote repo</li>
+                </ul>
+
+                <p>
+                    To view remote repos: <strong><code>git remote</code></strong><br>
+                    This displays the shortname location of each repo available.
+                </p>
+                <p>
+                    To view the full remote repo's path: <strong><code>git remote -v</code></strong>
+                </p>
+            </div>
+
+
         </div>
+
 
         <nav>
             <div>
@@ -92,4 +104,4 @@
             </div>
         </nav>
     </body>
-</html>                
+</html>
